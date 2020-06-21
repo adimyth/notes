@@ -7,8 +7,8 @@
 <meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="How to win a data science competition (Week 2)" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
-<meta property="og:description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<meta name="description" content="My personal notes of Coursera’s ‘How to win a data science competition’. The instructors talked in detail about exploratory data analysis, validation and data splitting strategies." />
+<meta property="og:description" content="My personal notes of Coursera’s ‘How to win a data science competition’. The instructors talked in detail about exploratory data analysis, validation and data splitting strategies." />
 <link rel="canonical" href="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" />
 <meta property="og:url" content="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" />
 <meta property="og:site_name" content="Notes" />
@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-06-19T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them.","@type":"BlogPosting","headline":"How to win a data science competition (Week 2)","dateModified":"2019-06-19T00:00:00-05:00","datePublished":"2019-06-19T00:00:00-05:00","image":"/notes/images/plots.png","url":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html"},"@context":"https://schema.org"}</script>
+{"description":"My personal notes of Coursera’s ‘How to win a data science competition’. The instructors talked in detail about exploratory data analysis, validation and data splitting strategies.","@type":"BlogPosting","headline":"How to win a data science competition (Week 2)","dateModified":"2019-06-19T00:00:00-05:00","datePublished":"2019-06-19T00:00:00-05:00","image":"/notes/images/plots.png","url":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/notes/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/notes/feed.xml" title="Notes" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -29,8 +29,8 @@
 <meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="How to win a data science competition (Week 2)" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
-<meta property="og:description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<meta name="description" content="My personal notes of Coursera’s ‘How to win a data science competition’. The instructors talked in detail about exploratory data analysis, validation and data splitting strategies." />
+<meta property="og:description" content="My personal notes of Coursera’s ‘How to win a data science competition’. The instructors talked in detail about exploratory data analysis, validation and data splitting strategies." />
 <link rel="canonical" href="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" />
 <meta property="og:url" content="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" />
 <meta property="og:site_name" content="Notes" />
@@ -38,7 +38,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-06-19T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them.","@type":"BlogPosting","headline":"How to win a data science competition (Week 2)","dateModified":"2019-06-19T00:00:00-05:00","datePublished":"2019-06-19T00:00:00-05:00","image":"/notes/images/plots.png","url":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html"},"@context":"https://schema.org"}</script>
+{"description":"My personal notes of Coursera’s ‘How to win a data science competition’. The instructors talked in detail about exploratory data analysis, validation and data splitting strategies.","@type":"BlogPosting","headline":"How to win a data science competition (Week 2)","dateModified":"2019-06-19T00:00:00-05:00","datePublished":"2019-06-19T00:00:00-05:00","image":"/notes/images/plots.png","url":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -107,7 +107,7 @@ window.onload = wrap_img;
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/notes/https:/adimyth.github.io/">About Me</a><a class="page-link" href="/notes/search/">Search</a><a class="page-link" href="/notes/categories/">Tags</a></div>
+        <div class="trigger"><a class="page-link" href="/notes/_pages/about.html">About Me</a><a class="page-link" href="/notes/search/">Search</a><a class="page-link" href="/notes/categories/">Tags</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -115,7 +115,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">How to win a data science competition (Week 2)</h1><p class="page-description">My personal notes of Coursera's 'How to win a data science competition'. I will continue to improve and update them.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-06-19T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">How to win a data science competition (Week 2)</h1><p class="page-description">My personal notes of Coursera's 'How to win a data science competition'. The instructors talked in detail about exploratory data analysis, validation and data splitting strategies.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-06-19T00:00:00-05:00" itemprop="datePublished">
         Jun 19, 2019
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -204,25 +204,31 @@ window.onload = wrap_img;
 <a class="anchor" href="#11-building-intuition-about-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 Building intuition about data</h2>
 
 <ol>
-  <li>Get domain knowledge
-    <ul>
-      <li>Understand the data &amp; how people usually tackle the problem</li>
-      <li>Understand different features, how they relate with each other &amp; how does it affect the target feature</li>
-      <li>It helps to deeper understand the problem</li>
-    </ul>
-  </li>
-  <li>Check if the data is intuitive/satisfactory
-    <ul>
-      <li>And agrees with domain knowledge</li>
-      <li>Looking at quantiles is useful</li>
-    </ul>
-  </li>
-  <li>Understand how the data was generated
-    <ul>
-      <li>Crucial to setup proper validation</li>
-    </ul>
-  </li>
+  <li>Get domain knowledge</li>
 </ol>
+
+<ul>
+  <li>Understand the data &amp; how people usually tackle the problem</li>
+  <li>Understand different features, how they relate with each other &amp; how does it affect the target feature</li>
+  <li>It helps to deeper understand the problem</li>
+</ul>
+
+<ol>
+  <li>Check if the data is intuitive/satisfactory</li>
+</ol>
+
+<ul>
+  <li>And agrees with domain knowledge</li>
+  <li>Looking at quantiles is useful</li>
+</ul>
+
+<ol>
+  <li>Understand how the data was generated</li>
+</ol>
+
+<ul>
+  <li>Crucial to setup proper validation</li>
+</ul>
 
 <h2 id="12-anonymised-data">
 <a class="anchor" href="#12-anonymised-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2 Anonymised Data</h2>
@@ -273,11 +279,14 @@ np.diff
 <a class="anchor" href="#132-visualization-of-feature-relations" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.2 Visualization of feature relations</h3>
 
 <ol>
-  <li>Scatter Plots
-    <ul>
-      <li>Can be used to check if the data distribution between train and test set are the same</li>
-    </ul>
-  </li>
+  <li>Scatter Plots</li>
+</ol>
+
+<ul>
+  <li>Can be used to check if the data distribution between train and test set are the same</li>
+</ul>
+
+<ol>
   <li>Scatter Matrix</li>
   <li>Correlation Matrix</li>
 </ol>
@@ -388,29 +397,39 @@ Faster model to train</p>
 <a class="anchor" href="#quizes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quizes</h3>
 
 <ol>
-  <li>Suppose we are given a huge dataset. We did a KFold validation once and noticed that scores on each fold are roughly the same. Which validation type is most practical to use?
-    <ul>
-      <li>Use holdout validation scheme as the data is homogenous</li>
-    </ul>
-  </li>
+  <li>Suppose we are given a huge dataset. We did a KFold validation once and noticed that scores on each fold are roughly the same. Which validation type is most practical to use?</li>
+</ol>
+
+<ul>
+  <li>Use holdout validation scheme as the data is homogenous</li>
+</ul>
+
+<ol>
   <li>
     <p>If validation scores differ noticeably for each fold in KFold, we should stick with KFold  in order to select statistically significant changes in scores while tuning a model.</p>
   </li>
-  <li>The features we generate depend on the train-test data splitting method. Is this true?
-    <ul>
-      <li>True</li>
-    </ul>
+  <li>
+    <p>The features we generate depend on the train-test data splitting method. Is this true?</p>
   </li>
+</ol>
+
+<ul>
+  <li>True</li>
+</ul>
+
+<ol>
   <li>
     <p>Performance increase on a fixed cross-validation split guaranties performance increase on any cross-validation split. Incorrect. You can overfit to the specific CV-split. You should change your split from time to time to reduce the chance of overfitting.</p>
   </li>
-  <li>On Kaggle, make submissions which are
-    <ul>
-      <li>Performing best on validation data - Assuming that train and test data distribution is same.</li>
-      <li>Performing best on public LB - Assuming that train and test data distribution is different.</li>
-    </ul>
+  <li>
+    <p>On Kaggle, make submissions which are</p>
   </li>
 </ol>
+
+<ul>
+  <li>Performing best on validation data - Assuming that train and test data distribution is same.</li>
+  <li>Performing best on public LB - Assuming that train and test data distribution is different.</li>
+</ul>
 
 <h2 id="data-leaks">
 <a class="anchor" href="#data-leaks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Leaks</h2>
