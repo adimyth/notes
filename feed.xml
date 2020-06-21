@@ -1,4 +1,374 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://adimyth.github.io/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="https://adimyth.github.io/notes/" rel="alternate" type="text/html" /><updated>2020-06-21T07:58:19-05:00</updated><id>https://adimyth.github.io/notes/feed.xml</id><title type="html">Notes</title><subtitle>Notes from different MOOCs.</subtitle><entry><title type="html">Fastpages Notebook Blog Post</title><link href="https://adimyth.github.io/notes/jupyter/2020/02/20/test.html" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>https://adimyth.github.io/notes/jupyter/2020/02/20/test</id><content type="html" xml:base="https://adimyth.github.io/notes/jupyter/2020/02/20/test.html">&lt;!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://adimyth.github.io/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="https://adimyth.github.io/notes/" rel="alternate" type="text/html" /><updated>2020-06-21T10:03:36-05:00</updated><id>https://adimyth.github.io/notes/feed.xml</id><title type="html">Notes</title><subtitle>Notes from different MOOCs.</subtitle><entry><title type="html">How to win a data science competition (Week 1)</title><link href="https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html" rel="alternate" type="text/html" title="How to win a data science competition (Week 1)" /><published>2020-06-14T00:00:00-05:00</published><updated>2020-06-14T00:00:00-05:00</updated><id>https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1</id><content type="html" xml:base="https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html">&lt;h1 id=&quot;how-to-win-a-data-science-competition-week-1&quot;&gt;How to win a data science competition (Week 1)&lt;/h1&gt;
+
+&lt;p&gt;Real World ML Pipeline&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Understanding of business problem&lt;/li&gt;
+  &lt;li&gt;Problem Formalization&lt;/li&gt;
+  &lt;li&gt;Data Collection&lt;/li&gt;
+  &lt;li&gt;Data Preprocessing&lt;/li&gt;
+  &lt;li&gt;Modelling&lt;/li&gt;
+  &lt;li&gt;Way to evaluate model in real life&lt;/li&gt;
+  &lt;li&gt;Way to deploy model&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Data Science Competitions&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Problem formalization&lt;/em&gt; (might be necessary sometimes)&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Data Collection&lt;/em&gt; (possible in few competitions)&lt;/li&gt;
+  &lt;li&gt;Data Preprocessing&lt;/li&gt;
+  &lt;li&gt;Modelling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Differences&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usually the hardest part of &lt;em&gt;problem formalisation and evaluation metrics&lt;/em&gt; is already done.&lt;/li&gt;
+  &lt;li&gt;Deployment is out of scope.&lt;/li&gt;
+  &lt;li&gt;Model complexity, speed &amp;amp; memory consumption doesn’t matter&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Resources&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76&quot;&gt;Random Forest&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@namanbhandari/extratreesclassifier-8e7fc0502c7&quot;&gt;ExtraTrees Classifier&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1-review&quot;&gt;1. Review&lt;/h2&gt;
+
+&lt;h3 id=&quot;11-linear-model&quot;&gt;1.1 Linear Model&lt;/h3&gt;
+
+&lt;p&gt;Especially good for sparse high dimensional data.
+Support Vector Machine (SVM) is a linear model with special loss function. Even with “kernel trick”, it’s still linear in new, extended space.
+Libraries: Scikit-learn and Vowpal Wabbit&lt;/p&gt;
+
+&lt;h3 id=&quot;12-tree-based-model&quot;&gt;1.2 Tree Based Model&lt;/h3&gt;
+
+&lt;p&gt;Decision trees used divide-and-conquer technique to recursively divide spaces into sub-spaces. Tree-based models can work very well with tabular data.&lt;/p&gt;
+
+&lt;p&gt;However, tree-based approaches &lt;strong&gt;&lt;em&gt;cannot easily capture linear dependencies&lt;/em&gt;&lt;/strong&gt; since it requires many splits.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://imgur.com/hbUfO5K.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ExtraTrees classifier always tests random splits over fraction of features (in contrast to RandomForest, which tests all possible splits over fraction of features)&lt;/p&gt;
+
+&lt;p&gt;Libraries: Scikit-learn, XGBoost, LightGBM&lt;/p&gt;
+
+&lt;h3 id=&quot;13-no-free-lunch-theorem&quot;&gt;1.3 No Free Lunch Theorem&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;“&lt;em&gt;There is no method which outperforms all others for all tasks&lt;/em&gt;“&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;“&lt;em&gt;For every method we can construct a task for which this particular method will not be the best&lt;/em&gt;“&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/YP4Lhyf.png&quot; alt=&quot;Decision Boundaries&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SVMs have a linear boundaries&lt;/li&gt;
+  &lt;li&gt;Decision trees have horizontal and vertical splits&lt;/li&gt;
+  &lt;li&gt;Random Forest has many more of these horizontal and vertical axes and are relatively smoother&lt;/li&gt;
+  &lt;li&gt;Naive Bayes has a smoother boundary compared to Neural Networks&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-preprocessing&quot;&gt;2. Preprocessing&lt;/h2&gt;
+
+&lt;h2 id=&quot;21-numeric-features&quot;&gt;2.1 Numeric Features&lt;/h2&gt;
+
+&lt;p&gt;Preprocessing depends on the type of model we use.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Tree based models (Decision Trees)&lt;/li&gt;
+  &lt;li&gt;Non-tree based models (KNNs, Neural Nets, Linear Models)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;211-scaling&quot;&gt;2.1.1 Scaling&lt;/h3&gt;
+
+&lt;p&gt;Non-tree based models are affected by the scale of the features.
+Different feature scaling results in different models quality. On the other hand, Decision Trees try to find the best split for a feature, no matter the scale.&lt;/p&gt;
+
+&lt;p&gt;Explanation&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nearest Neighbours
+    &lt;ul&gt;
+      &lt;li&gt;The scale of features impacts the distance between samples.&lt;/li&gt;
+      &lt;li&gt;With different scaling of the features nearest neighbours for a selected object can be very different.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Linear Models / Neural Networks
+    &lt;ul&gt;
+      &lt;li&gt;Amount of regularization applied to a feature depends on the feature’s scale.&lt;/li&gt;
+      &lt;li&gt;Optimization methods can perform differently depending on relative scale of features.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Others
+    &lt;ul&gt;
+      &lt;li&gt;KMeans, SVMs, LDA, PCA, etc&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;MinMax Scaler - The distribution of the feature before and after scaling remains the same. The value range is 0 to 1.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;X = (X — X.min) / (X.max — X.min)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MinMaxScaler&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Standard Scaler - We always get a standard normal distribution.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;X = (X — X.mean) / X.std&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;212-winsorization&quot;&gt;2.1.2 Winsorization&lt;/h3&gt;
+
+&lt;p&gt;Treating outliers by clipping values between two ranges - upper bound and lower bound. Say 1 &amp;amp; 99 percentile of the feature values.&lt;/p&gt;
+
+&lt;h3 id=&quot;213-rank-transformation&quot;&gt;2.1.3 Rank Transformation&lt;/h3&gt;
+
+&lt;p&gt;Sorts an array and changes their values to indices. Similar to binning.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Example:
+rank([-100, 1, 1e-5]) = [0, 1, 2]
+rank([1000, 1, 10]) = [2, 0, 1]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Linear Models, KNN and Neural Networks usually benefit from this transformation.&lt;/p&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;scipy.stats.rankdata&lt;/code&gt; to create ranks. For test data, either store the mapping of value ranges to indices or concatenate train &amp;amp; test data before applying the rank transformation.&lt;/p&gt;
+
+&lt;h3 id=&quot;214-log-transformation&quot;&gt;2.1.4 Log Transformation&lt;/h3&gt;
+
+&lt;p&gt;Helps all non-tree based models especially neural nets. .&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# log transformation
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Skewness transformation&lt;/li&gt;
+  &lt;li&gt;This transformation is non-linear and will move outliers relatively closer to other samples. Also, values near zero become more distinguishable.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;22-categorical-features&quot;&gt;2.2 Categorical Features&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://kiwidamien.github.io/encoding-categorical-variables.html&quot;&gt;Excellent article&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;221-label-encoding&quot;&gt;2.2.1 Label Encoding&lt;/h3&gt;
+
+&lt;p&gt;Works well with tree based methods. Linear methods struggle to extract meaning out of label encoded features. Categories encoded with numbers that close are to each other (usually) are not more related then categories encoded with numbers that far away from each other.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Categorical features are ordinal in nature&lt;/li&gt;
+    &lt;li&gt;When the number of categorical features in the dataset is huge&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Methods -&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Alphabetically Sorted
+[S, C, Q] -&amp;gt; [2, 1, 3]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LabelEncoder&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Order of Appearance
+[S, C, Q] -&amp;gt; [1, 2, 3]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Pandas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;factorize&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;222-frequency-encoding&quot;&gt;2.2.2 Frequency Encoding&lt;/h3&gt;
+
+&lt;p&gt;Encode categories on the frequency of their occurrence. Preserves information about value distribution.
+Example:  For a given list [S, C, Q, S, S, C, Q, S, C, S] the feature column can be encoded by replacing [S, C, Q] -&amp;gt; [0.5, 0.3, 0.2]&lt;/p&gt;
+
+&lt;p&gt;Can be useful for both tree based &amp;amp; non-tree based models.&lt;/p&gt;
+
+&lt;h3 id=&quot;223-one-hot-encoding&quot;&gt;2.2.3 One hot Encoding&lt;/h3&gt;
+
+&lt;p&gt;Works best for non-tree based models. One-hot encoded features are already scaled as the maximum value is 1 and minimum value is 0. Hence, suitable for non-tree based models which suffer from scaling issues.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;On each split, trees can only separate one category from the others. So greater the number of categories, greater will be the number of splits.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;224-mean-target-encoding&quot;&gt;2.2.4 Mean Target Encoding&lt;/h3&gt;
+
+&lt;p&gt;Encoding categorical variables with a mean target value (and also other target statistics) is a popular method for working with &lt;strong&gt;&lt;em&gt;high cardinality features&lt;/em&gt;&lt;/strong&gt;, especially useful for tree-based models. Mean encodings let models converge faster. Useful when working with &lt;strong&gt;high cardinality categorical features&lt;/strong&gt;. &lt;strong&gt;&lt;em&gt;Easy to overfit.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;means&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;means&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It is useful to apply target encoding when the number of samples of each category type belonging to the target value equal to say 1 is reasonable i.e if &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; has values only 0 and 1 &amp;amp; say for the category &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; belonging to &lt;code class=&quot;highlighter-rouge&quot;&gt;x_0&lt;/code&gt; doesn’t have any target value as 1, then it’s mean will be 0.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For continous target value, feature is replaced by average target value. Example - if &lt;em&gt;profession=teacher&lt;/em&gt; is the categorical feature &amp;amp; &lt;em&gt;salary&lt;/em&gt; is target, then &lt;em&gt;teacher&lt;/em&gt; is replaced by &lt;em&gt;average salary of teachers&lt;/em&gt; in the training set&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;225-binary-encoding&quot;&gt;2.2.5 Binary Encoding&lt;/h3&gt;
+
+&lt;p&gt;Binary encoding for categorical variables, similar to onehot, but stores categories as binary bitstrings.&lt;/p&gt;
+
+&lt;p&gt;First the categories are encoded as ordinal, then those integers are converted into binary code, then the digits from that binary string are split into separate columns.  This encodes the data in fewer dimensions that one-hot, but with some distortion of the distances.&lt;/p&gt;
+
+&lt;p&gt;Different categories may share some of the same features.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-datetime&quot;&gt;3 Datetime&lt;/h2&gt;
+
+&lt;h3 id=&quot;31-periodicity&quot;&gt;3.1 Periodicity&lt;/h3&gt;
+
+&lt;p&gt;Useful to capture repetitive patterns in data. We can add features like&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Day number in week&lt;/li&gt;
+  &lt;li&gt;Month&lt;/li&gt;
+  &lt;li&gt;Season&lt;/li&gt;
+  &lt;li&gt;Year&lt;/li&gt;
+  &lt;li&gt;Second&lt;/li&gt;
+  &lt;li&gt;Minute&lt;/li&gt;
+  &lt;li&gt;Hour&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;32-time-passed-since-a-particular-event&quot;&gt;3.2 Time passed since a particular event&lt;/h3&gt;
+
+&lt;p&gt;Case 1 -&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;In this case, &lt;strong&gt;&lt;em&gt;all the samples become comparable between each other on one time scale.&lt;/em&gt;&lt;/strong&gt; Days passed since January 1, 2000.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Case 2 -&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;In this case, the date will depend on the sample we are calculating this for. For example - number of days since last holiday, number of days since last weekend, number of days to the next holiday, etc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;33-difference-between-dates&quot;&gt;3.3 Difference between Dates&lt;/h3&gt;
+
+&lt;p&gt;Number of days between two events. Example - Subtracting &lt;em&gt;end_date - start_date&lt;/em&gt;  gives number of years loan amount was paid.&lt;/p&gt;
+
+&lt;h2 id=&quot;4-coordinates&quot;&gt;4. Coordinates&lt;/h2&gt;
+
+&lt;h3 id=&quot;41-distance-based-features&quot;&gt;4.1 Distance based Features&lt;/h3&gt;
+
+&lt;p&gt;Find out the most interesting points in the map say the best school/hospital in the town, a museum, etc and calculate distance of the samples to this point. Add them as a feature in the training and test dataset.&lt;/p&gt;
+
+&lt;h3 id=&quot;42-aggregated-statistics&quot;&gt;4.2 Aggregated Statistics&lt;/h3&gt;
+
+&lt;p&gt;Calculate aggregated statistics for objects surrounding areas such as the total number of flats in the vicinity which can then be interpreted as areas of popularity.’&lt;/p&gt;
+
+&lt;p&gt;Or you could calculate &lt;em&gt;average price flat&lt;/em&gt; grouped by say &lt;em&gt;pin code, area&lt;/em&gt; which would indicate  expensiveness.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-missing-values&quot;&gt;5. Missing Values&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Missing values can be represented in any way not necessarily as NaN. Some examples are -1, 999, , empty string, NaN, etc.&lt;/li&gt;
+  &lt;li&gt;Sometimes missing values can contain information by themselves.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;51-imputation&quot;&gt;5.1 Imputation&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use a value outside the range of the normal values for a variable. like -1 ,or -9999 etc.&lt;/li&gt;
+  &lt;li&gt;Replace with a likelihood – e.g. something that relates to the target variable.&lt;/li&gt;
+  &lt;li&gt;Replace with something which makes sense. For example - sometimes null may mean zero&lt;/li&gt;
+  &lt;li&gt;You may consider removing rows with many null values&lt;/li&gt;
+  &lt;li&gt;Try to predict missing values based on subsets of know values. For example -  in time series data, where rows are not independent of each other, then a missing value can be replaced by say averaging values from within a window&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;52-adding-isnull-column&quot;&gt;5.2 Adding isNull column&lt;/h3&gt;
+
+&lt;p&gt;For each of the numerical features we can add an &lt;code class=&quot;highlighter-rouge&quot;&gt;isNull&lt;/code&gt; column representing whether a particular row for a column in discussion contains empty values &lt;code class=&quot;highlighter-rouge&quot;&gt;(NaN, NaT, None)&lt;/code&gt;. Useful specially for tree-based methods &amp;amp; neural nets.
+The downside is that we double the number of columns.&lt;/p&gt;
+
+&lt;h3 id=&quot;53-general&quot;&gt;5.3 General&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Some models like XGBoost and CatBoost can deal with missing values out-of-box. These models have special methods to treat them and a model’s quality can benefit from it&lt;/li&gt;
+  &lt;li&gt;Do not fill NaNs before feature generation&lt;/li&gt;
+  &lt;li&gt;Impute with a feature mean/median&lt;/li&gt;
+  &lt;li&gt;Remove rows with missing values&lt;/li&gt;
+  &lt;li&gt;Reconstruct the missing values&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;54-issue-while-generating-new-feature-from-existing-feature-which-has-null-values&quot;&gt;5.4 Issue while generating new feature from existing feature which has null values&lt;/h3&gt;
+
+&lt;p&gt;Order should be -&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Missing Value Imputation -&amp;gt; Feature Generation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We should be very careful about replacing missing values before the feature generation.&lt;/p&gt;
+
+&lt;h2 id=&quot;6-feature-extraction-in-text-and-images&quot;&gt;6. Feature Extraction in Text and Images&lt;/h2&gt;
+
+&lt;h3 id=&quot;61-bag-of-words&quot;&gt;6.1 Bag of Words&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;N-grams can help utilise &lt;em&gt;local context around each word&lt;/em&gt; because n-grams encode sequences of words.&lt;/li&gt;
+  &lt;li&gt;It is called a “bag” of words, because any &lt;em&gt;information about the order or structure of words in the document is discarded&lt;/em&gt;. The model is only concerned with whether known words occur in the document, not where in the document.&lt;/li&gt;
+  &lt;li&gt;N-grams features are typically &lt;em&gt;sparse&lt;/em&gt;. N-grams deal with counts of words occurrences, and not every word can be found in a document.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Bag of words usually produces longer vectors than Word2Vec&lt;/em&gt;. Number of features in Bag of words approach is usually equal to number of unique words, while number of features in w2v is restricted to a constant, like 300 or so.&lt;/li&gt;
+  &lt;li&gt;Meaning of a value in BOW matrix is the number of a word’s occurrences in a document. Values in vectors cannot be interpreted.&lt;/li&gt;
+  &lt;li&gt;Word2Vec and Bag of words give different results. We can combine them to get more variety of results.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;611-countvectorizer&quot;&gt;6.1.1 Countvectorizer&lt;/h4&gt;
+
+&lt;p&gt;Count the occurence of each word in a given document.&lt;/p&gt;
+
+&lt;p&gt;Needs scaling at the end to be use in linear models, as most occurring words will have higher counts and assume more importance. This is overcome by tf-idf vectorizer.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;feature_extraction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CountVectorize&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;612-tf-idf-vectorizer&quot;&gt;6.1.2 Tf-idf vectorizer&lt;/h4&gt;
+
+&lt;p&gt;TF-IDF is applied to a matrix where each &lt;em&gt;column represents a word, each row represents a document&lt;/em&gt;, and each value shows the number of times a particular word occurred in a particular document.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;MAKING DOCUMENTS/SENTENCES OF DIFFERENT LENGTHS MORE COMPARABLE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Term Frequency measures how frequently a term occurs in a document. Since every document is different in length, it is possible that a term would appear much more times in long documents than shorter ones. Thus, the term frequency is often divided by the document length (aka. the total number of terms in the document) as a way of normalization. Term-frequency (TF) normalises sum of the column values to 1.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;BOOST MORE IMPORTANT FEATURES&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Normalizing feature by the inverse fraction of documents. In this case features corresponding to frequent words will be scaled down compared to features corresponding to rarer words.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;IDF(t) = log(Total number of documents / Number of documents with term t in it).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;IDF scales features inversely proportionally to a number of word occurrences over documents&lt;/p&gt;
+
+&lt;h2 id=&quot;7-geographic-data&quot;&gt;7. Geographic Data&lt;/h2&gt;
+
+&lt;h3 id=&quot;71-zip-codes&quot;&gt;7.1 ZIP Codes&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Letting zip code as a numeric variable is not a good idea since some models might consider the numeric ordering or distances as something to learn.&lt;/li&gt;
+  &lt;li&gt;Look up demographic variables based on zipcode. For example - With &lt;a href=&quot;http://www.city-data.com/&quot;&gt;City Data&lt;/a&gt; you can look up income distribution, age ranges, etc.&lt;/li&gt;
+  &lt;li&gt;Get latitude and longitude based on zip codes, which can be useful, especially for tree based models&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">How to win a data science competition (Week 1)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://adimyth.github.io/notes/images/decision-boundaries.png" /><media:content medium="image" url="https://adimyth.github.io/notes/images/decision-boundaries.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Fastpages Notebook Blog Post</title><link href="https://adimyth.github.io/notes/jupyter/2020/02/20/test.html" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>https://adimyth.github.io/notes/jupyter/2020/02/20/test</id><content type="html" xml:base="https://adimyth.github.io/notes/jupyter/2020/02/20/test.html">&lt;!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>How to win a data science competition (Week 1) | Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="How to win a data science competition (Week 1)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<meta property="og:description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<link rel="canonical" href="https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html" />
+<meta property="og:url" content="https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html" />
+<meta property="og:site_name" content="Notes" />
+<meta property="og:image" content="https://adimyth.github.io/notes/images/decision-boundaries.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-14T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them.","@type":"BlogPosting","headline":"How to win a data science competition (Week 1)","dateModified":"2020-06-14T00:00:00-05:00","datePublished":"2020-06-14T00:00:00-05:00","image":"https://adimyth.github.io/notes/images/decision-boundaries.png","url":"https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/notes/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://adimyth.github.io/notes/feed.xml" title="Notes" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-140233777-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/notes/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>How to win a data science competition (Week 1) | Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="How to win a data science competition (Week 1)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<meta property="og:description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<link rel="canonical" href="https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html" />
+<meta property="og:url" content="https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html" />
+<meta property="og:site_name" content="Notes" />
+<meta property="og:image" content="https://adimyth.github.io/notes/images/decision-boundaries.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-14T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them.","@type":"BlogPosting","headline":"How to win a data science competition (Week 1)","dateModified":"2020-06-14T00:00:00-05:00","datePublished":"2020-06-14T00:00:00-05:00","image":"https://adimyth.github.io/notes/images/decision-boundaries.png","url":"https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://adimyth.github.io/notes/feed.xml" title="Notes" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-140233777-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/notes/">Notes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/notes/https:/adimyth.github.io/">About Me</a><a class="page-link" href="/notes/search/">Search</a><a class="page-link" href="/notes/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How to win a data science competition (Week 1)</h1><p class="page-description">My personal notes of Coursera's 'How to win a data science competition'. I will continue to improve and update them.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-14T00:00:00-05:00" itemprop="datePublished">
+        Jun 14, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      10 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/notes/categories/#markdown">markdown</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/notes/categories/#datascience">datascience</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/notes/categories/#kaggle">kaggle</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#how-to-win-a-data-science-competition-week-1">How to win a data science competition (Week 1)</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1-review">1. Review</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#11-linear-model">1.1 Linear Model</a></li>
+<li class="toc-entry toc-h3"><a href="#12-tree-based-model">1.2 Tree Based Model</a></li>
+<li class="toc-entry toc-h3"><a href="#13-no-free-lunch-theorem">1.3 No Free Lunch Theorem</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#2-preprocessing">2. Preprocessing</a></li>
+<li class="toc-entry toc-h2"><a href="#21-numeric-features">2.1 Numeric Features</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#211-scaling">2.1.1 Scaling</a></li>
+<li class="toc-entry toc-h3"><a href="#212-winsorization">2.1.2 Winsorization</a></li>
+<li class="toc-entry toc-h3"><a href="#213-rank-transformation">2.1.3 Rank Transformation</a></li>
+<li class="toc-entry toc-h3"><a href="#214-log-transformation">2.1.4 Log Transformation</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#22-categorical-features">2.2 Categorical Features</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#221-label-encoding">2.2.1 Label Encoding</a></li>
+<li class="toc-entry toc-h3"><a href="#222-frequency-encoding">2.2.2 Frequency Encoding</a></li>
+<li class="toc-entry toc-h3"><a href="#223-one-hot-encoding">2.2.3 One hot Encoding</a></li>
+<li class="toc-entry toc-h3"><a href="#224-mean-target-encoding">2.2.4 Mean Target Encoding</a></li>
+<li class="toc-entry toc-h3"><a href="#225-binary-encoding">2.2.5 Binary Encoding</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#3-datetime">3 Datetime</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#31-periodicity">3.1 Periodicity</a></li>
+<li class="toc-entry toc-h3"><a href="#32-time-passed-since-a-particular-event">3.2 Time passed since a particular event</a></li>
+<li class="toc-entry toc-h3"><a href="#33-difference-between-dates">3.3 Difference between Dates</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#4-coordinates">4. Coordinates</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#41-distance-based-features">4.1 Distance based Features</a></li>
+<li class="toc-entry toc-h3"><a href="#42-aggregated-statistics">4.2 Aggregated Statistics</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#5-missing-values">5. Missing Values</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#51-imputation">5.1 Imputation</a></li>
+<li class="toc-entry toc-h3"><a href="#52-adding-isnull-column">5.2 Adding isNull column</a></li>
+<li class="toc-entry toc-h3"><a href="#53-general">5.3 General</a></li>
+<li class="toc-entry toc-h3"><a href="#54-issue-while-generating-new-feature-from-existing-feature-which-has-null-values">5.4 Issue while generating new feature from existing feature which has null values</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#6-feature-extraction-in-text-and-images">6. Feature Extraction in Text and Images</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#61-bag-of-words">6.1 Bag of Words</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#611-countvectorizer">6.1.1 Countvectorizer</a></li>
+<li class="toc-entry toc-h4"><a href="#612-tf-idf-vectorizer">6.1.2 Tf-idf vectorizer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#7-geographic-data">7. Geographic Data</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#71-zip-codes">7.1 ZIP Codes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h1 id="how-to-win-a-data-science-competition-week-1">
+<a class="anchor" href="#how-to-win-a-data-science-competition-week-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to win a data science competition (Week 1)</h1>
+
+<p>Real World ML Pipeline</p>
+
+<ul>
+  <li>Understanding of business problem</li>
+  <li>Problem Formalization</li>
+  <li>Data Collection</li>
+  <li>Data Preprocessing</li>
+  <li>Modelling</li>
+  <li>Way to evaluate model in real life</li>
+  <li>Way to deploy model</li>
+</ul>
+
+<p>Data Science Competitions</p>
+
+<ul>
+  <li>
+<em>Problem formalization</em> (might be necessary sometimes)</li>
+  <li>
+<em>Data Collection</em> (possible in few competitions)</li>
+  <li>Data Preprocessing</li>
+  <li>Modelling</li>
+</ul>
+
+<p>Differences</p>
+
+<ul>
+  <li>Usually the hardest part of <em>problem formalisation and evaluation metrics</em> is already done.</li>
+  <li>Deployment is out of scope.</li>
+  <li>Model complexity, speed &amp; memory consumption doesn’t matter</li>
+</ul>
+
+<p><strong>Resources</strong></p>
+
+<ul>
+  <li><a href="https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76">Random Forest</a></li>
+  <li><a href="https://medium.com/@namanbhandari/extratreesclassifier-8e7fc0502c7">ExtraTrees Classifier</a></li>
+</ul>
+
+<h2 id="1-review">
+<a class="anchor" href="#1-review" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Review</h2>
+
+<h3 id="11-linear-model">
+<a class="anchor" href="#11-linear-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 Linear Model</h3>
+
+<p>Especially good for sparse high dimensional data.
+Support Vector Machine (SVM) is a linear model with special loss function. Even with “kernel trick”, it’s still linear in new, extended space.
+Libraries: Scikit-learn and Vowpal Wabbit</p>
+
+<h3 id="12-tree-based-model">
+<a class="anchor" href="#12-tree-based-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2 Tree Based Model</h3>
+
+<p>Decision trees used divide-and-conquer technique to recursively divide spaces into sub-spaces. Tree-based models can work very well with tabular data.</p>
+
+<p>However, tree-based approaches <strong><em>cannot easily capture linear dependencies</em></strong> since it requires many splits.</p>
+
+<p><img src="https://imgur.com/hbUfO5K.png" alt="Imgur"></p>
+
+<p>ExtraTrees classifier always tests random splits over fraction of features (in contrast to RandomForest, which tests all possible splits over fraction of features)</p>
+
+<p>Libraries: Scikit-learn, XGBoost, LightGBM</p>
+
+<h3 id="13-no-free-lunch-theorem">
+<a class="anchor" href="#13-no-free-lunch-theorem" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3 No Free Lunch Theorem</h3>
+
+<p><strong>“<em>There is no method which outperforms all others for all tasks</em>“</strong></p>
+
+<p><strong>“<em>For every method we can construct a task for which this particular method will not be the best</em>“</strong></p>
+
+<p><img src="https://i.imgur.com/YP4Lhyf.png" alt="Decision Boundaries"></p>
+
+<ul>
+  <li>SVMs have a linear boundaries</li>
+  <li>Decision trees have horizontal and vertical splits</li>
+  <li>Random Forest has many more of these horizontal and vertical axes and are relatively smoother</li>
+  <li>Naive Bayes has a smoother boundary compared to Neural Networks</li>
+</ul>
+
+<h2 id="2-preprocessing">
+<a class="anchor" href="#2-preprocessing" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Preprocessing</h2>
+
+<h2 id="21-numeric-features">
+<a class="anchor" href="#21-numeric-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 Numeric Features</h2>
+
+<p>Preprocessing depends on the type of model we use.</p>
+
+<ol>
+  <li>Tree based models (Decision Trees)</li>
+  <li>Non-tree based models (KNNs, Neural Nets, Linear Models)</li>
+</ol>
+
+<h3 id="211-scaling">
+<a class="anchor" href="#211-scaling" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.1 Scaling</h3>
+
+<p>Non-tree based models are affected by the scale of the features.
+Different feature scaling results in different models quality. On the other hand, Decision Trees try to find the best split for a feature, no matter the scale.</p>
+
+<p>Explanation</p>
+
+<ul>
+  <li>Nearest Neighbours
+    <ul>
+      <li>The scale of features impacts the distance between samples.</li>
+      <li>With different scaling of the features nearest neighbours for a selected object can be very different.</li>
+    </ul>
+  </li>
+  <li>Linear Models / Neural Networks
+    <ul>
+      <li>Amount of regularization applied to a feature depends on the feature’s scale.</li>
+      <li>Optimization methods can perform differently depending on relative scale of features.</li>
+    </ul>
+  </li>
+  <li>Others
+    <ul>
+      <li>KMeans, SVMs, LDA, PCA, etc</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>MinMax Scaler - The distribution of the feature before and after scaling remains the same. The value range is 0 to 1.</li>
+</ol>
+
+<blockquote>
+  <p>X = (X — X.min) / (X.max — X.min)</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Standard Scaler - We always get a standard normal distribution.</li>
+</ol>
+
+<blockquote>
+  <p>X = (X — X.mean) / X.std</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span>
+</code></pre></div></div>
+
+<h3 id="212-winsorization">
+<a class="anchor" href="#212-winsorization" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.2 Winsorization</h3>
+
+<p>Treating outliers by clipping values between two ranges - upper bound and lower bound. Say 1 &amp; 99 percentile of the feature values.</p>
+
+<h3 id="213-rank-transformation">
+<a class="anchor" href="#213-rank-transformation" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.3 Rank Transformation</h3>
+
+<p>Sorts an array and changes their values to indices. Similar to binning.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Example:
+rank([-100, 1, 1e-5]) = [0, 1, 2]
+rank([1000, 1, 10]) = [2, 0, 1]
+</code></pre></div></div>
+
+<p>Linear Models, KNN and Neural Networks usually benefit from this transformation.</p>
+
+<p>Use <code class="highlighter-rouge">scipy.stats.rankdata</code> to create ranks. For test data, either store the mapping of value ranges to indices or concatenate train &amp; test data before applying the rank transformation.</p>
+
+<h3 id="214-log-transformation">
+<a class="anchor" href="#214-log-transformation" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1.4 Log Transformation</h3>
+
+<p>Helps all non-tree based models especially neural nets. .</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># log transformation
+</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Skewness transformation</li>
+  <li>This transformation is non-linear and will move outliers relatively closer to other samples. Also, values near zero become more distinguishable.</li>
+</ol>
+
+<h2 id="22-categorical-features">
+<a class="anchor" href="#22-categorical-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2 Categorical Features</h2>
+
+<p><a href="https://kiwidamien.github.io/encoding-categorical-variables.html">Excellent article</a></p>
+
+<h3 id="221-label-encoding">
+<a class="anchor" href="#221-label-encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.1 Label Encoding</h3>
+
+<p>Works well with tree based methods. Linear methods struggle to extract meaning out of label encoded features. Categories encoded with numbers that close are to each other (usually) are not more related then categories encoded with numbers that far away from each other.</p>
+
+<blockquote>
+  <ol>
+    <li>Categorical features are ordinal in nature</li>
+    <li>When the number of categorical features in the dataset is huge</li>
+  </ol>
+</blockquote>
+
+<p>Methods -</p>
+
+<ol>
+  <li>Alphabetically Sorted
+[S, C, Q] -&gt; [2, 1, 3]</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Order of Appearance
+[S, C, Q] -&gt; [1, 2, 3]</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Pandas</span><span class="o">.</span><span class="n">factorize</span>
+</code></pre></div></div>
+
+<h3 id="222-frequency-encoding">
+<a class="anchor" href="#222-frequency-encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.2 Frequency Encoding</h3>
+
+<p>Encode categories on the frequency of their occurrence. Preserves information about value distribution.
+Example:  For a given list [S, C, Q, S, S, C, Q, S, C, S] the feature column can be encoded by replacing [S, C, Q] -&gt; [0.5, 0.3, 0.2]</p>
+
+<p>Can be useful for both tree based &amp; non-tree based models.</p>
+
+<h3 id="223-one-hot-encoding">
+<a class="anchor" href="#223-one-hot-encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.3 One hot Encoding</h3>
+
+<p>Works best for non-tree based models. One-hot encoded features are already scaled as the maximum value is 1 and minimum value is 0. Hence, suitable for non-tree based models which suffer from scaling issues.</p>
+
+<blockquote>
+  <p>On each split, trees can only separate one category from the others. So greater the number of categories, greater will be the number of splits.</p>
+</blockquote>
+
+<h3 id="224-mean-target-encoding">
+<a class="anchor" href="#224-mean-target-encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.4 Mean Target Encoding</h3>
+
+<p>Encoding categorical variables with a mean target value (and also other target statistics) is a popular method for working with <strong><em>high cardinality features</em></strong>, especially useful for tree-based models. Mean encodings let models converge faster. Useful when working with <strong>high cardinality categorical features</strong>. <strong><em>Easy to overfit.</em></strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">means</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'X'</span><span class="p">)[</span><span class="s">'y'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'X'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'X'</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">means</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>It is useful to apply target encoding when the number of samples of each category type belonging to the target value equal to say 1 is reasonable i.e if <code class="highlighter-rouge">y</code> has values only 0 and 1 &amp; say for the category <code class="highlighter-rouge">a</code> belonging to <code class="highlighter-rouge">x_0</code> doesn’t have any target value as 1, then it’s mean will be 0.</p>
+
+<blockquote>
+  <p>For continous target value, feature is replaced by average target value. Example - if <em>profession=teacher</em> is the categorical feature &amp; <em>salary</em> is target, then <em>teacher</em> is replaced by <em>average salary of teachers</em> in the training set</p>
+</blockquote>
+
+<h3 id="225-binary-encoding">
+<a class="anchor" href="#225-binary-encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.5 Binary Encoding</h3>
+
+<p>Binary encoding for categorical variables, similar to onehot, but stores categories as binary bitstrings.</p>
+
+<p>First the categories are encoded as ordinal, then those integers are converted into binary code, then the digits from that binary string are split into separate columns.  This encodes the data in fewer dimensions that one-hot, but with some distortion of the distances.</p>
+
+<p>Different categories may share some of the same features.</p>
+
+<h2 id="3-datetime">
+<a class="anchor" href="#3-datetime" aria-hidden="true"><span class="octicon octicon-link"></span></a>3 Datetime</h2>
+
+<h3 id="31-periodicity">
+<a class="anchor" href="#31-periodicity" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1 Periodicity</h3>
+
+<p>Useful to capture repetitive patterns in data. We can add features like</p>
+
+<ul>
+  <li>Day number in week</li>
+  <li>Month</li>
+  <li>Season</li>
+  <li>Year</li>
+  <li>Second</li>
+  <li>Minute</li>
+  <li>Hour</li>
+</ul>
+
+<h3 id="32-time-passed-since-a-particular-event">
+<a class="anchor" href="#32-time-passed-since-a-particular-event" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2 Time passed since a particular event</h3>
+
+<p>Case 1 -</p>
+<blockquote>
+  <p>In this case, <strong><em>all the samples become comparable between each other on one time scale.</em></strong> Days passed since January 1, 2000.</p>
+</blockquote>
+
+<p>Case 2 -</p>
+<blockquote>
+  <p>In this case, the date will depend on the sample we are calculating this for. For example - number of days since last holiday, number of days since last weekend, number of days to the next holiday, etc.</p>
+</blockquote>
+
+<h3 id="33-difference-between-dates">
+<a class="anchor" href="#33-difference-between-dates" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3 Difference between Dates</h3>
+
+<p>Number of days between two events. Example - Subtracting <em>end_date - start_date</em>  gives number of years loan amount was paid.</p>
+
+<h2 id="4-coordinates">
+<a class="anchor" href="#4-coordinates" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Coordinates</h2>
+
+<h3 id="41-distance-based-features">
+<a class="anchor" href="#41-distance-based-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.1 Distance based Features</h3>
+
+<p>Find out the most interesting points in the map say the best school/hospital in the town, a museum, etc and calculate distance of the samples to this point. Add them as a feature in the training and test dataset.</p>
+
+<h3 id="42-aggregated-statistics">
+<a class="anchor" href="#42-aggregated-statistics" aria-hidden="true"><span class="octicon octicon-link"></span></a>4.2 Aggregated Statistics</h3>
+
+<p>Calculate aggregated statistics for objects surrounding areas such as the total number of flats in the vicinity which can then be interpreted as areas of popularity.’</p>
+
+<p>Or you could calculate <em>average price flat</em> grouped by say <em>pin code, area</em> which would indicate  expensiveness.</p>
+
+<h2 id="5-missing-values">
+<a class="anchor" href="#5-missing-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Missing Values</h2>
+
+<ul>
+  <li>Missing values can be represented in any way not necessarily as NaN. Some examples are -1, 999, , empty string, NaN, etc.</li>
+  <li>Sometimes missing values can contain information by themselves.</li>
+</ul>
+
+<h3 id="51-imputation">
+<a class="anchor" href="#51-imputation" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.1 Imputation</h3>
+
+<ul>
+  <li>Use a value outside the range of the normal values for a variable. like -1 ,or -9999 etc.</li>
+  <li>Replace with a likelihood – e.g. something that relates to the target variable.</li>
+  <li>Replace with something which makes sense. For example - sometimes null may mean zero</li>
+  <li>You may consider removing rows with many null values</li>
+  <li>Try to predict missing values based on subsets of know values. For example -  in time series data, where rows are not independent of each other, then a missing value can be replaced by say averaging values from within a window</li>
+</ul>
+
+<h3 id="52-adding-isnull-column">
+<a class="anchor" href="#52-adding-isnull-column" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.2 Adding isNull column</h3>
+
+<p>For each of the numerical features we can add an <code class="highlighter-rouge">isNull</code> column representing whether a particular row for a column in discussion contains empty values <code class="highlighter-rouge">(NaN, NaT, None)</code>. Useful specially for tree-based methods &amp; neural nets.
+The downside is that we double the number of columns.</p>
+
+<h3 id="53-general">
+<a class="anchor" href="#53-general" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.3 General</h3>
+
+<ul>
+  <li>Some models like XGBoost and CatBoost can deal with missing values out-of-box. These models have special methods to treat them and a model’s quality can benefit from it</li>
+  <li>Do not fill NaNs before feature generation</li>
+  <li>Impute with a feature mean/median</li>
+  <li>Remove rows with missing values</li>
+  <li>Reconstruct the missing values</li>
+</ul>
+
+<h3 id="54-issue-while-generating-new-feature-from-existing-feature-which-has-null-values">
+<a class="anchor" href="#54-issue-while-generating-new-feature-from-existing-feature-which-has-null-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.4 Issue while generating new feature from existing feature which has null values</h3>
+
+<p>Order should be -</p>
+<blockquote>
+  <p>Missing Value Imputation -&gt; Feature Generation</p>
+</blockquote>
+
+<p>We should be very careful about replacing missing values before the feature generation.</p>
+
+<h2 id="6-feature-extraction-in-text-and-images">
+<a class="anchor" href="#6-feature-extraction-in-text-and-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Feature Extraction in Text and Images</h2>
+
+<h3 id="61-bag-of-words">
+<a class="anchor" href="#61-bag-of-words" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.1 Bag of Words</h3>
+
+<ol>
+  <li>N-grams can help utilise <em>local context around each word</em> because n-grams encode sequences of words.</li>
+  <li>It is called a “bag” of words, because any <em>information about the order or structure of words in the document is discarded</em>. The model is only concerned with whether known words occur in the document, not where in the document.</li>
+  <li>N-grams features are typically <em>sparse</em>. N-grams deal with counts of words occurrences, and not every word can be found in a document.</li>
+  <li>
+<em>Bag of words usually produces longer vectors than Word2Vec</em>. Number of features in Bag of words approach is usually equal to number of unique words, while number of features in w2v is restricted to a constant, like 300 or so.</li>
+  <li>Meaning of a value in BOW matrix is the number of a word’s occurrences in a document. Values in vectors cannot be interpreted.</li>
+  <li>Word2Vec and Bag of words give different results. We can combine them to get more variety of results.</li>
+</ol>
+
+<h4 id="611-countvectorizer">
+<a class="anchor" href="#611-countvectorizer" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.1.1 Countvectorizer</h4>
+
+<p>Count the occurence of each word in a given document.</p>
+
+<p>Needs scaling at the end to be use in linear models, as most occurring words will have higher counts and assume more importance. This is overcome by tf-idf vectorizer.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sklearn</span><span class="o">.</span><span class="n">feature_extraction</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">CountVectorize</span>
+</code></pre></div></div>
+
+<h4 id="612-tf-idf-vectorizer">
+<a class="anchor" href="#612-tf-idf-vectorizer" aria-hidden="true"><span class="octicon octicon-link"></span></a>6.1.2 Tf-idf vectorizer</h4>
+
+<p>TF-IDF is applied to a matrix where each <em>column represents a word, each row represents a document</em>, and each value shows the number of times a particular word occurred in a particular document.</p>
+
+<p><strong>MAKING DOCUMENTS/SENTENCES OF DIFFERENT LENGTHS MORE COMPARABLE</strong></p>
+
+<p>Term Frequency measures how frequently a term occurs in a document. Since every document is different in length, it is possible that a term would appear much more times in long documents than shorter ones. Thus, the term frequency is often divided by the document length (aka. the total number of terms in the document) as a way of normalization. Term-frequency (TF) normalises sum of the column values to 1.</p>
+
+<blockquote>
+  <p>TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document).</p>
+</blockquote>
+
+<p><strong>BOOST MORE IMPORTANT FEATURES</strong></p>
+
+<p>Normalizing feature by the inverse fraction of documents. In this case features corresponding to frequent words will be scaled down compared to features corresponding to rarer words.</p>
+
+<blockquote>
+  <p>IDF(t) = log(Total number of documents / Number of documents with term t in it).</p>
+</blockquote>
+
+<p>IDF scales features inversely proportionally to a number of word occurrences over documents</p>
+
+<h2 id="7-geographic-data">
+<a class="anchor" href="#7-geographic-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>7. Geographic Data</h2>
+
+<h3 id="71-zip-codes">
+<a class="anchor" href="#71-zip-codes" aria-hidden="true"><span class="octicon octicon-link"></span></a>7.1 ZIP Codes</h3>
+
+<ol>
+  <li>Letting zip code as a numeric variable is not a good idea since some models might consider the numeric ordering or distances as something to learn.</li>
+  <li>Look up demographic variables based on zipcode. For example - With <a href="http://www.city-data.com/">City Data</a> you can look up income distribution, age ranges, etc.</li>
+  <li>Get latitude and longitude based on zip codes, which can be useful, especially for tree based models</li>
+</ol>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="adimyth/notes"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/notes/markdown/datascience/kaggle/2020/06/14/week1.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/notes/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/notes/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/notes/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Notes from different MOOCs.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/adimyth" title="adimyth"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/adi_myth" title="adi_myth"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
