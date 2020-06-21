@@ -1,1 +1,1 @@
-Sitemap: https://adimyth.github.io/notes/sitemap.xml
+Sitemap: /notes/sitemap.xml

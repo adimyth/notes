@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>How to win a data science competition (Week 2) | Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="How to win a data science competition (Week 2)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<meta property="og:description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<link rel="canonical" href="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" />
+<meta property="og:url" content="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" />
+<meta property="og:site_name" content="Notes" />
+<meta property="og:image" content="/notes/images/plots.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-06-19T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them.","@type":"BlogPosting","headline":"How to win a data science competition (Week 2)","dateModified":"2019-06-19T00:00:00-05:00","datePublished":"2019-06-19T00:00:00-05:00","image":"/notes/images/plots.png","url":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/notes/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/notes/feed.xml" title="Notes" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-140233777-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/notes/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>How to win a data science competition (Week 2) | Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="How to win a data science competition (Week 2)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<meta property="og:description" content="My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them." />
+<link rel="canonical" href="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" />
+<meta property="og:url" content="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" />
+<meta property="og:site_name" content="Notes" />
+<meta property="og:image" content="/notes/images/plots.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-06-19T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"My personal notes of Coursera’s ‘How to win a data science competition’. I will continue to improve and update them.","@type":"BlogPosting","headline":"How to win a data science competition (Week 2)","dateModified":"2019-06-19T00:00:00-05:00","datePublished":"2019-06-19T00:00:00-05:00","image":"/notes/images/plots.png","url":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="/notes/feed.xml" title="Notes" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-140233777-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/notes/">Notes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/notes/https:/adimyth.github.io/">About Me</a><a class="page-link" href="/notes/search/">Search</a><a class="page-link" href="/notes/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How to win a data science competition (Week 2)</h1><p class="page-description">My personal notes of Coursera's 'How to win a data science competition'. I will continue to improve and update them.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2019-06-19T00:00:00-05:00" itemprop="datePublished">
+        Jun 19, 2019
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/notes/categories/#datascience">datascience</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/notes/categories/#kaggle">kaggle</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/notes/categories/#eda">eda</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/notes/categories/#cross-validation">cross-validation</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#how-to-win-a-data-science-competition-week-2">How to win a data science competition (Week 2)</a></li>
+<li class="toc-entry toc-h1"><a href="#1-eda">1. EDA</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#11-building-intuition-about-data">1.1 Building intuition about data</a></li>
+<li class="toc-entry toc-h2"><a href="#12-anonymised-data">1.2 Anonymised Data</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#121-explore-individual-features">1.2.1 Explore Individual Features</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#13-visualization-tools">1.3 Visualization Tools</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#131-visualization-of-individual-features">1.3.1 Visualization of Individual Features</a></li>
+<li class="toc-entry toc-h3"><a href="#132-visualization-of-feature-relations">1.3.2 Visualization of feature relations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#2-data-cleaning">2. Data Cleaning</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#21-remove-constant-columns">2.1 Remove constant columns</a></li>
+<li class="toc-entry toc-h2"><a href="#22-remove-duplicated-columns">2.2 Remove duplicated columns</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#221-numerical">2.2.1 Numerical</a></li>
+<li class="toc-entry toc-h3"><a href="#222-categorical">2.2.2 Categorical</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#23-others">2.3 Others</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#3-validation-types">3. Validation types</a></li>
+<li class="toc-entry toc-h1"><a href="#4-data-splitting-strategies">4. Data splitting strategies</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#quizes">Quizes</a></li>
+<li class="toc-entry toc-h2"><a href="#data-leaks">Data Leaks</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#basic-data-leaks">Basic Data Leaks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h1 id="how-to-win-a-data-science-competition-week-2">
+<a class="anchor" href="#how-to-win-a-data-science-competition-week-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to win a data science competition (Week 2)</h1>
+
+<h1 id="1-eda">
+<a class="anchor" href="#1-eda" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. EDA</h1>
+
+<ul>
+  <li>Better understand the data</li>
+  <li>Build an intuition about the data</li>
+  <li>Generate Hypothesis</li>
+  <li>Gain insights</li>
+</ul>
+
+<h2 id="11-building-intuition-about-data">
+<a class="anchor" href="#11-building-intuition-about-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 Building intuition about data</h2>
+
+<ol>
+  <li>Get domain knowledge
+    <ul>
+      <li>Understand the data &amp; how people usually tackle the problem</li>
+      <li>Understand different features, how they relate with each other &amp; how does it affect the target feature</li>
+      <li>It helps to deeper understand the problem</li>
+    </ul>
+  </li>
+  <li>Check if the data is intuitive/satisfactory
+    <ul>
+      <li>And agrees with domain knowledge</li>
+      <li>Looking at quantiles is useful</li>
+    </ul>
+  </li>
+  <li>Understand how the data was generated
+    <ul>
+      <li>Crucial to setup proper validation</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="12-anonymised-data">
+<a class="anchor" href="#12-anonymised-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2 Anonymised Data</h2>
+
+<h3 id="121-explore-individual-features">
+<a class="anchor" href="#121-explore-individual-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2.1 Explore Individual Features</h3>
+
+<ul>
+  <li>Guess the meaning of the features</li>
+  <li>Guess the types of the column</li>
+</ul>
+
+<p>Play around with</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pd.Series.value_counts
+pd.DataFrame.dtypes
+mean and standard deviation
+pd.DataFrame.sort_values(by="")
+np.diff
+</code></pre></div></div>
+
+<p>You never know what you might discover</p>
+
+<h2 id="13-visualization-tools">
+<a class="anchor" href="#13-visualization-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3 Visualization Tools</h2>
+
+<h3 id="131-visualization-of-individual-features">
+<a class="anchor" href="#131-visualization-of-individual-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.1 Visualization of Individual Features</h3>
+
+<p><a href="https://www.dummies.com/education/math/statistics/how-histograms-can-misrepresent-statistical-data/">Misleading Histograms</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># if degenerate graph; like all values pointing to 0
+</span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># horizontal line implies repeating values &amp; the missing vertical lines implies well shuffled data
+</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">'.'</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="132-visualization-of-feature-relations">
+<a class="anchor" href="#132-visualization-of-feature-relations" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3.2 Visualization of feature relations</h3>
+
+<ol>
+  <li>Scatter Plots
+    <ul>
+      <li>Can be used to check if the data distribution between train and test set are the same</li>
+    </ul>
+  </li>
+  <li>Scatter Matrix</li>
+  <li>Correlation Matrix</li>
+</ol>
+
+<h1 id="2-data-cleaning">
+<a class="anchor" href="#2-data-cleaning" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Data Cleaning</h1>
+
+<p>Concatenating train and test data first</p>
+
+<h3 id="21-remove-constant-columns">
+<a class="anchor" href="#21-remove-constant-columns" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 Remove constant columns</h3>
+
+<p>Remove features that have only 1 value for the entire feature.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">traintest</span><span class="o">.</span><span class="n">nunique</span><span class="p">(</span><span class="n">axis</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>Sometimes it might happen that there is constant value in the train data but multiple values for that feature in the test data.</p>
+
+<ul>
+  <li>Remove that feature</li>
+  <li>Train multiple models, each model for a different value in that feature</li>
+</ul>
+
+<h2 id="22-remove-duplicated-columns">
+<a class="anchor" href="#22-remove-duplicated-columns" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2 Remove duplicated columns</h2>
+
+<h3 id="221-numerical">
+<a class="anchor" href="#221-numerical" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.1 Numerical</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">traintest</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="222-categorical">
+<a class="anchor" href="#222-categorical" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.2 Categorical</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># label encode each categorical feature as numeric &amp; repeat as above
+</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">categorical_feats</span><span class="p">:</span>
+ <span class="n">traintest</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">traintest</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">factorize</span><span class="p">()</span>
+
+<span class="n">traintest</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>I usually look at the <code class="highlighter-rouge">value_counts</code> of each feature. If the feature has low cardinality, then category-wise count for 2 same features will also be the same.</p>
+
+<h2 id="23-others">
+<a class="anchor" href="#23-others" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3 Others</h2>
+
+<ul>
+  <li>Find duplicated rows and understand why they are duplicated</li>
+  <li>Check if the dataset is shuffled</li>
+</ul>
+
+<h1 id="3-validation-types">
+<a class="anchor" href="#3-validation-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Validation types</h1>
+
+<ul>
+  <li>Holdout - Divide train into train and validation such that each sample belongs either to train or validation. There should be no repetition. In case, there are <strong>duplicated samples</strong> in the data, it might happen that one of the duplicated example is in val, this would lead to higher scores and improper hyperparameter selection.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sklearn</span><span class="o">.</span><span class="n">model_selection</span><span class="o">.</span><span class="n">ShuffleSplit</span>
+</code></pre></div></div>
+
+<ul>
+  <li>K-Fold - K times slower than Holdout. Different than repeating Holdout K times in the sense, that it’s entirely possible that a sample may never be a part of validation set or might be a part of validation set multiple times. K-Fold however ensures that each sample is a part of validation set only once.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sklearn</span><span class="o">.</span><span class="n">model_selection</span><span class="o">.</span><span class="n">Kfold</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Leave-one-out
+    <ul>
+      <li>Iterate over samples: retrain the model on all samples except current sample, predict for the current sample. You will need to retrain the model N times (if N is the number of samples in the dataset).</li>
+      <li>In the end you will get LOO predictions for every sample in the trainset and can calculate loss.</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Small amount of data
+Faster model to train</p>
+</blockquote>
+
+<ul>
+  <li>Stratification - Preserves same target distribution over different folds
+    <ul>
+      <li>Small training data</li>
+      <li>Unbalanced datasets</li>
+      <li>Multiclass classification problem</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="4-data-splitting-strategies">
+<a class="anchor" href="#4-data-splitting-strategies" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Data splitting strategies</h1>
+
+<p>We should make train/validation split to mimic the train/test split.</p>
+
+<ul>
+  <li>Random/rowwise split</li>
+  <li>Time based split - Similar are moving window validation split</li>
+  <li>Id-based split</li>
+  <li>Combined split</li>
+</ul>
+
+<h3 id="quizes">
+<a class="anchor" href="#quizes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quizes</h3>
+
+<ol>
+  <li>Suppose we are given a huge dataset. We did a KFold validation once and noticed that scores on each fold are roughly the same. Which validation type is most practical to use?
+    <ul>
+      <li>Use holdout validation scheme as the data is homogenous</li>
+    </ul>
+  </li>
+  <li>
+    <p>If validation scores differ noticeably for each fold in KFold, we should stick with KFold  in order to select statistically significant changes in scores while tuning a model.</p>
+  </li>
+  <li>The features we generate depend on the train-test data splitting method. Is this true?
+    <ul>
+      <li>True</li>
+    </ul>
+  </li>
+  <li>
+    <p>Performance increase on a fixed cross-validation split guaranties performance increase on any cross-validation split. Incorrect. You can overfit to the specific CV-split. You should change your split from time to time to reduce the chance of overfitting.</p>
+  </li>
+  <li>On Kaggle, make submissions which are
+    <ul>
+      <li>Performing best on validation data - Assuming that train and test data distribution is same.</li>
+      <li>Performing best on public LB - Assuming that train and test data distribution is different.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="data-leaks">
+<a class="anchor" href="#data-leaks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Leaks</h2>
+
+<h3 id="basic-data-leaks">
+<a class="anchor" href="#basic-data-leaks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Data Leaks</h3>
+
+<ul>
+  <li>Row Based - Data may sometimes be shuffled by target variable. So simply adding row number might improve the score.</li>
+  <li>Id Based -  Sometimes, ID may contain traces of information connected to target variable.</li>
+  <li>Meta-Data - Example image creation date, camera resolution etc in a classical cats vs dogs contest, where cats images were taken before dogs or taken using specific camera.</li>
+</ul>
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="adimyth/notes"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/notes/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/notes/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/notes/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Notes from different MOOCs.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/adimyth" title="adimyth"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/adi_myth" title="adi_myth"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

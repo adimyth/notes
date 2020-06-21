@@ -1,374 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://adimyth.github.io/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="https://adimyth.github.io/notes/" rel="alternate" type="text/html" /><updated>2020-06-21T10:03:36-05:00</updated><id>https://adimyth.github.io/notes/feed.xml</id><title type="html">Notes</title><subtitle>Notes from different MOOCs.</subtitle><entry><title type="html">How to win a data science competition (Week 1)</title><link href="https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html" rel="alternate" type="text/html" title="How to win a data science competition (Week 1)" /><published>2020-06-14T00:00:00-05:00</published><updated>2020-06-14T00:00:00-05:00</updated><id>https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1</id><content type="html" xml:base="https://adimyth.github.io/notes/markdown/datascience/kaggle/2020/06/14/week1.html">&lt;h1 id=&quot;how-to-win-a-data-science-competition-week-1&quot;&gt;How to win a data science competition (Week 1)&lt;/h1&gt;
-
-&lt;p&gt;Real World ML Pipeline&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Understanding of business problem&lt;/li&gt;
-  &lt;li&gt;Problem Formalization&lt;/li&gt;
-  &lt;li&gt;Data Collection&lt;/li&gt;
-  &lt;li&gt;Data Preprocessing&lt;/li&gt;
-  &lt;li&gt;Modelling&lt;/li&gt;
-  &lt;li&gt;Way to evaluate model in real life&lt;/li&gt;
-  &lt;li&gt;Way to deploy model&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Data Science Competitions&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;Problem formalization&lt;/em&gt; (might be necessary sometimes)&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Data Collection&lt;/em&gt; (possible in few competitions)&lt;/li&gt;
-  &lt;li&gt;Data Preprocessing&lt;/li&gt;
-  &lt;li&gt;Modelling&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Differences&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Usually the hardest part of &lt;em&gt;problem formalisation and evaluation metrics&lt;/em&gt; is already done.&lt;/li&gt;
-  &lt;li&gt;Deployment is out of scope.&lt;/li&gt;
-  &lt;li&gt;Model complexity, speed &amp;amp; memory consumption doesn’t matter&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Resources&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76&quot;&gt;Random Forest&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/@namanbhandari/extratreesclassifier-8e7fc0502c7&quot;&gt;ExtraTrees Classifier&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;1-review&quot;&gt;1. Review&lt;/h2&gt;
-
-&lt;h3 id=&quot;11-linear-model&quot;&gt;1.1 Linear Model&lt;/h3&gt;
-
-&lt;p&gt;Especially good for sparse high dimensional data.
-Support Vector Machine (SVM) is a linear model with special loss function. Even with “kernel trick”, it’s still linear in new, extended space.
-Libraries: Scikit-learn and Vowpal Wabbit&lt;/p&gt;
-
-&lt;h3 id=&quot;12-tree-based-model&quot;&gt;1.2 Tree Based Model&lt;/h3&gt;
-
-&lt;p&gt;Decision trees used divide-and-conquer technique to recursively divide spaces into sub-spaces. Tree-based models can work very well with tabular data.&lt;/p&gt;
-
-&lt;p&gt;However, tree-based approaches &lt;strong&gt;&lt;em&gt;cannot easily capture linear dependencies&lt;/em&gt;&lt;/strong&gt; since it requires many splits.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://imgur.com/hbUfO5K.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ExtraTrees classifier always tests random splits over fraction of features (in contrast to RandomForest, which tests all possible splits over fraction of features)&lt;/p&gt;
-
-&lt;p&gt;Libraries: Scikit-learn, XGBoost, LightGBM&lt;/p&gt;
-
-&lt;h3 id=&quot;13-no-free-lunch-theorem&quot;&gt;1.3 No Free Lunch Theorem&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;“&lt;em&gt;There is no method which outperforms all others for all tasks&lt;/em&gt;“&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;“&lt;em&gt;For every method we can construct a task for which this particular method will not be the best&lt;/em&gt;“&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/YP4Lhyf.png&quot; alt=&quot;Decision Boundaries&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;SVMs have a linear boundaries&lt;/li&gt;
-  &lt;li&gt;Decision trees have horizontal and vertical splits&lt;/li&gt;
-  &lt;li&gt;Random Forest has many more of these horizontal and vertical axes and are relatively smoother&lt;/li&gt;
-  &lt;li&gt;Naive Bayes has a smoother boundary compared to Neural Networks&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2-preprocessing&quot;&gt;2. Preprocessing&lt;/h2&gt;
-
-&lt;h2 id=&quot;21-numeric-features&quot;&gt;2.1 Numeric Features&lt;/h2&gt;
-
-&lt;p&gt;Preprocessing depends on the type of model we use.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Tree based models (Decision Trees)&lt;/li&gt;
-  &lt;li&gt;Non-tree based models (KNNs, Neural Nets, Linear Models)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;211-scaling&quot;&gt;2.1.1 Scaling&lt;/h3&gt;
-
-&lt;p&gt;Non-tree based models are affected by the scale of the features.
-Different feature scaling results in different models quality. On the other hand, Decision Trees try to find the best split for a feature, no matter the scale.&lt;/p&gt;
-
-&lt;p&gt;Explanation&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Nearest Neighbours
-    &lt;ul&gt;
-      &lt;li&gt;The scale of features impacts the distance between samples.&lt;/li&gt;
-      &lt;li&gt;With different scaling of the features nearest neighbours for a selected object can be very different.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Linear Models / Neural Networks
-    &lt;ul&gt;
-      &lt;li&gt;Amount of regularization applied to a feature depends on the feature’s scale.&lt;/li&gt;
-      &lt;li&gt;Optimization methods can perform differently depending on relative scale of features.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Others
-    &lt;ul&gt;
-      &lt;li&gt;KMeans, SVMs, LDA, PCA, etc&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;MinMax Scaler - The distribution of the feature before and after scaling remains the same. The value range is 0 to 1.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;X = (X — X.min) / (X.max — X.min)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MinMaxScaler&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Standard Scaler - We always get a standard normal distribution.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;X = (X — X.mean) / X.std&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;212-winsorization&quot;&gt;2.1.2 Winsorization&lt;/h3&gt;
-
-&lt;p&gt;Treating outliers by clipping values between two ranges - upper bound and lower bound. Say 1 &amp;amp; 99 percentile of the feature values.&lt;/p&gt;
-
-&lt;h3 id=&quot;213-rank-transformation&quot;&gt;2.1.3 Rank Transformation&lt;/h3&gt;
-
-&lt;p&gt;Sorts an array and changes their values to indices. Similar to binning.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Example:
-rank([-100, 1, 1e-5]) = [0, 1, 2]
-rank([1000, 1, 10]) = [2, 0, 1]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Linear Models, KNN and Neural Networks usually benefit from this transformation.&lt;/p&gt;
-
-&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;scipy.stats.rankdata&lt;/code&gt; to create ranks. For test data, either store the mapping of value ranges to indices or concatenate train &amp;amp; test data before applying the rank transformation.&lt;/p&gt;
-
-&lt;h3 id=&quot;214-log-transformation&quot;&gt;2.1.4 Log Transformation&lt;/h3&gt;
-
-&lt;p&gt;Helps all non-tree based models especially neural nets. .&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# log transformation
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Skewness transformation&lt;/li&gt;
-  &lt;li&gt;This transformation is non-linear and will move outliers relatively closer to other samples. Also, values near zero become more distinguishable.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;22-categorical-features&quot;&gt;2.2 Categorical Features&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://kiwidamien.github.io/encoding-categorical-variables.html&quot;&gt;Excellent article&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;221-label-encoding&quot;&gt;2.2.1 Label Encoding&lt;/h3&gt;
-
-&lt;p&gt;Works well with tree based methods. Linear methods struggle to extract meaning out of label encoded features. Categories encoded with numbers that close are to each other (usually) are not more related then categories encoded with numbers that far away from each other.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;Categorical features are ordinal in nature&lt;/li&gt;
-    &lt;li&gt;When the number of categorical features in the dataset is huge&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Methods -&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Alphabetically Sorted
-[S, C, Q] -&amp;gt; [2, 1, 3]&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LabelEncoder&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Order of Appearance
-[S, C, Q] -&amp;gt; [1, 2, 3]&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Pandas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;factorize&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;222-frequency-encoding&quot;&gt;2.2.2 Frequency Encoding&lt;/h3&gt;
-
-&lt;p&gt;Encode categories on the frequency of their occurrence. Preserves information about value distribution.
-Example:  For a given list [S, C, Q, S, S, C, Q, S, C, S] the feature column can be encoded by replacing [S, C, Q] -&amp;gt; [0.5, 0.3, 0.2]&lt;/p&gt;
-
-&lt;p&gt;Can be useful for both tree based &amp;amp; non-tree based models.&lt;/p&gt;
-
-&lt;h3 id=&quot;223-one-hot-encoding&quot;&gt;2.2.3 One hot Encoding&lt;/h3&gt;
-
-&lt;p&gt;Works best for non-tree based models. One-hot encoded features are already scaled as the maximum value is 1 and minimum value is 0. Hence, suitable for non-tree based models which suffer from scaling issues.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;On each split, trees can only separate one category from the others. So greater the number of categories, greater will be the number of splits.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;224-mean-target-encoding&quot;&gt;2.2.4 Mean Target Encoding&lt;/h3&gt;
-
-&lt;p&gt;Encoding categorical variables with a mean target value (and also other target statistics) is a popular method for working with &lt;strong&gt;&lt;em&gt;high cardinality features&lt;/em&gt;&lt;/strong&gt;, especially useful for tree-based models. Mean encodings let models converge faster. Useful when working with &lt;strong&gt;high cardinality categorical features&lt;/strong&gt;. &lt;strong&gt;&lt;em&gt;Easy to overfit.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;means&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;means&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It is useful to apply target encoding when the number of samples of each category type belonging to the target value equal to say 1 is reasonable i.e if &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; has values only 0 and 1 &amp;amp; say for the category &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; belonging to &lt;code class=&quot;highlighter-rouge&quot;&gt;x_0&lt;/code&gt; doesn’t have any target value as 1, then it’s mean will be 0.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;For continous target value, feature is replaced by average target value. Example - if &lt;em&gt;profession=teacher&lt;/em&gt; is the categorical feature &amp;amp; &lt;em&gt;salary&lt;/em&gt; is target, then &lt;em&gt;teacher&lt;/em&gt; is replaced by &lt;em&gt;average salary of teachers&lt;/em&gt; in the training set&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;225-binary-encoding&quot;&gt;2.2.5 Binary Encoding&lt;/h3&gt;
-
-&lt;p&gt;Binary encoding for categorical variables, similar to onehot, but stores categories as binary bitstrings.&lt;/p&gt;
-
-&lt;p&gt;First the categories are encoded as ordinal, then those integers are converted into binary code, then the digits from that binary string are split into separate columns.  This encodes the data in fewer dimensions that one-hot, but with some distortion of the distances.&lt;/p&gt;
-
-&lt;p&gt;Different categories may share some of the same features.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-datetime&quot;&gt;3 Datetime&lt;/h2&gt;
-
-&lt;h3 id=&quot;31-periodicity&quot;&gt;3.1 Periodicity&lt;/h3&gt;
-
-&lt;p&gt;Useful to capture repetitive patterns in data. We can add features like&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Day number in week&lt;/li&gt;
-  &lt;li&gt;Month&lt;/li&gt;
-  &lt;li&gt;Season&lt;/li&gt;
-  &lt;li&gt;Year&lt;/li&gt;
-  &lt;li&gt;Second&lt;/li&gt;
-  &lt;li&gt;Minute&lt;/li&gt;
-  &lt;li&gt;Hour&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;32-time-passed-since-a-particular-event&quot;&gt;3.2 Time passed since a particular event&lt;/h3&gt;
-
-&lt;p&gt;Case 1 -&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;In this case, &lt;strong&gt;&lt;em&gt;all the samples become comparable between each other on one time scale.&lt;/em&gt;&lt;/strong&gt; Days passed since January 1, 2000.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Case 2 -&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;In this case, the date will depend on the sample we are calculating this for. For example - number of days since last holiday, number of days since last weekend, number of days to the next holiday, etc.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;33-difference-between-dates&quot;&gt;3.3 Difference between Dates&lt;/h3&gt;
-
-&lt;p&gt;Number of days between two events. Example - Subtracting &lt;em&gt;end_date - start_date&lt;/em&gt;  gives number of years loan amount was paid.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-coordinates&quot;&gt;4. Coordinates&lt;/h2&gt;
-
-&lt;h3 id=&quot;41-distance-based-features&quot;&gt;4.1 Distance based Features&lt;/h3&gt;
-
-&lt;p&gt;Find out the most interesting points in the map say the best school/hospital in the town, a museum, etc and calculate distance of the samples to this point. Add them as a feature in the training and test dataset.&lt;/p&gt;
-
-&lt;h3 id=&quot;42-aggregated-statistics&quot;&gt;4.2 Aggregated Statistics&lt;/h3&gt;
-
-&lt;p&gt;Calculate aggregated statistics for objects surrounding areas such as the total number of flats in the vicinity which can then be interpreted as areas of popularity.’&lt;/p&gt;
-
-&lt;p&gt;Or you could calculate &lt;em&gt;average price flat&lt;/em&gt; grouped by say &lt;em&gt;pin code, area&lt;/em&gt; which would indicate  expensiveness.&lt;/p&gt;
-
-&lt;h2 id=&quot;5-missing-values&quot;&gt;5. Missing Values&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Missing values can be represented in any way not necessarily as NaN. Some examples are -1, 999, , empty string, NaN, etc.&lt;/li&gt;
-  &lt;li&gt;Sometimes missing values can contain information by themselves.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;51-imputation&quot;&gt;5.1 Imputation&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Use a value outside the range of the normal values for a variable. like -1 ,or -9999 etc.&lt;/li&gt;
-  &lt;li&gt;Replace with a likelihood – e.g. something that relates to the target variable.&lt;/li&gt;
-  &lt;li&gt;Replace with something which makes sense. For example - sometimes null may mean zero&lt;/li&gt;
-  &lt;li&gt;You may consider removing rows with many null values&lt;/li&gt;
-  &lt;li&gt;Try to predict missing values based on subsets of know values. For example -  in time series data, where rows are not independent of each other, then a missing value can be replaced by say averaging values from within a window&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;52-adding-isnull-column&quot;&gt;5.2 Adding isNull column&lt;/h3&gt;
-
-&lt;p&gt;For each of the numerical features we can add an &lt;code class=&quot;highlighter-rouge&quot;&gt;isNull&lt;/code&gt; column representing whether a particular row for a column in discussion contains empty values &lt;code class=&quot;highlighter-rouge&quot;&gt;(NaN, NaT, None)&lt;/code&gt;. Useful specially for tree-based methods &amp;amp; neural nets.
-The downside is that we double the number of columns.&lt;/p&gt;
-
-&lt;h3 id=&quot;53-general&quot;&gt;5.3 General&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Some models like XGBoost and CatBoost can deal with missing values out-of-box. These models have special methods to treat them and a model’s quality can benefit from it&lt;/li&gt;
-  &lt;li&gt;Do not fill NaNs before feature generation&lt;/li&gt;
-  &lt;li&gt;Impute with a feature mean/median&lt;/li&gt;
-  &lt;li&gt;Remove rows with missing values&lt;/li&gt;
-  &lt;li&gt;Reconstruct the missing values&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;54-issue-while-generating-new-feature-from-existing-feature-which-has-null-values&quot;&gt;5.4 Issue while generating new feature from existing feature which has null values&lt;/h3&gt;
-
-&lt;p&gt;Order should be -&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Missing Value Imputation -&amp;gt; Feature Generation&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;We should be very careful about replacing missing values before the feature generation.&lt;/p&gt;
-
-&lt;h2 id=&quot;6-feature-extraction-in-text-and-images&quot;&gt;6. Feature Extraction in Text and Images&lt;/h2&gt;
-
-&lt;h3 id=&quot;61-bag-of-words&quot;&gt;6.1 Bag of Words&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;N-grams can help utilise &lt;em&gt;local context around each word&lt;/em&gt; because n-grams encode sequences of words.&lt;/li&gt;
-  &lt;li&gt;It is called a “bag” of words, because any &lt;em&gt;information about the order or structure of words in the document is discarded&lt;/em&gt;. The model is only concerned with whether known words occur in the document, not where in the document.&lt;/li&gt;
-  &lt;li&gt;N-grams features are typically &lt;em&gt;sparse&lt;/em&gt;. N-grams deal with counts of words occurrences, and not every word can be found in a document.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Bag of words usually produces longer vectors than Word2Vec&lt;/em&gt;. Number of features in Bag of words approach is usually equal to number of unique words, while number of features in w2v is restricted to a constant, like 300 or so.&lt;/li&gt;
-  &lt;li&gt;Meaning of a value in BOW matrix is the number of a word’s occurrences in a document. Values in vectors cannot be interpreted.&lt;/li&gt;
-  &lt;li&gt;Word2Vec and Bag of words give different results. We can combine them to get more variety of results.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;611-countvectorizer&quot;&gt;6.1.1 Countvectorizer&lt;/h4&gt;
-
-&lt;p&gt;Count the occurence of each word in a given document.&lt;/p&gt;
-
-&lt;p&gt;Needs scaling at the end to be use in linear models, as most occurring words will have higher counts and assume more importance. This is overcome by tf-idf vectorizer.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;feature_extraction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CountVectorize&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;612-tf-idf-vectorizer&quot;&gt;6.1.2 Tf-idf vectorizer&lt;/h4&gt;
-
-&lt;p&gt;TF-IDF is applied to a matrix where each &lt;em&gt;column represents a word, each row represents a document&lt;/em&gt;, and each value shows the number of times a particular word occurred in a particular document.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;MAKING DOCUMENTS/SENTENCES OF DIFFERENT LENGTHS MORE COMPARABLE&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Term Frequency measures how frequently a term occurs in a document. Since every document is different in length, it is possible that a term would appear much more times in long documents than shorter ones. Thus, the term frequency is often divided by the document length (aka. the total number of terms in the document) as a way of normalization. Term-frequency (TF) normalises sum of the column values to 1.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;BOOST MORE IMPORTANT FEATURES&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Normalizing feature by the inverse fraction of documents. In this case features corresponding to frequent words will be scaled down compared to features corresponding to rarer words.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;IDF(t) = log(Total number of documents / Number of documents with term t in it).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;IDF scales features inversely proportionally to a number of word occurrences over documents&lt;/p&gt;
-
-&lt;h2 id=&quot;7-geographic-data&quot;&gt;7. Geographic Data&lt;/h2&gt;
-
-&lt;h3 id=&quot;71-zip-codes&quot;&gt;7.1 ZIP Codes&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Letting zip code as a numeric variable is not a good idea since some models might consider the numeric ordering or distances as something to learn.&lt;/li&gt;
-  &lt;li&gt;Look up demographic variables based on zipcode. For example - With &lt;a href=&quot;http://www.city-data.com/&quot;&gt;City Data&lt;/a&gt; you can look up income distribution, age ranges, etc.&lt;/li&gt;
-  &lt;li&gt;Get latitude and longitude based on zip codes, which can be useful, especially for tree based models&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">How to win a data science competition (Week 1)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://adimyth.github.io/notes/images/decision-boundaries.png" /><media:content medium="image" url="https://adimyth.github.io/notes/images/decision-boundaries.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Fastpages Notebook Blog Post</title><link href="https://adimyth.github.io/notes/jupyter/2020/02/20/test.html" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>https://adimyth.github.io/notes/jupyter/2020/02/20/test</id><content type="html" xml:base="https://adimyth.github.io/notes/jupyter/2020/02/20/test.html">&lt;!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="/notes/" rel="alternate" type="text/html" /><updated>2020-06-21T10:45:11-05:00</updated><id>/notes/feed.xml</id><title type="html">Notes</title><subtitle>Notes from different MOOCs.</subtitle><entry><title type="html">Fastpages Notebook Blog Post</title><link href="/notes/jupyter/2020/02/20/test.html" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>/notes/jupyter/2020/02/20/test</id><content type="html" xml:base="/notes/jupyter/2020/02/20/test.html">&lt;!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
@@ -1100,123 +730,1075 @@ And another {% fn 2 %}
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name></name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://adimyth.github.io/notes/images/chart-preview.png" /><media:content medium="image" url="https://adimyth.github.io/notes/images/chart-preview.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">An Example Markdown Post</title><link href="https://adimyth.github.io/notes/markdown/2020/01/14/test-markdown-post.html" rel="alternate" type="text/html" title="An Example Markdown Post" /><published>2020-01-14T00:00:00-06:00</published><updated>2020-01-14T00:00:00-06:00</updated><id>https://adimyth.github.io/notes/markdown/2020/01/14/test-markdown-post</id><content type="html" xml:base="https://adimyth.github.io/notes/markdown/2020/01/14/test-markdown-post.html">&lt;h1 id=&quot;example-markdown-post&quot;&gt;Example Markdown Post&lt;/h1&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/notes/images/chart-preview.png" /><media:content medium="image" url="/notes/images/chart-preview.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to win a data science competition (Week 3)</title><link href="/notes/evaluation%20metrics/losses/datascience/kaggle/2019/06/26/week3.html" rel="alternate" type="text/html" title="How to win a data science competition (Week 3)" /><published>2019-06-26T00:00:00-05:00</published><updated>2019-06-26T00:00:00-05:00</updated><id>/notes/evaluation%20metrics/losses/datascience/kaggle/2019/06/26/week3</id><content type="html" xml:base="/notes/evaluation%20metrics/losses/datascience/kaggle/2019/06/26/week3.html">&lt;h1 id=&quot;how-to-win-a-data-science-competition-week-3&quot;&gt;How to win a data science competition (Week 3)&lt;/h1&gt;
 
-&lt;h2 id=&quot;basic-setup&quot;&gt;Basic setup&lt;/h2&gt;
+&lt;h2 id=&quot;regression-metrics&quot;&gt;Regression Metrics&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fi.stack.imgur.com%2F83BUy.png&amp;amp;f=1&quot; alt=&quot;Regression Metrics&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-filename.md&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Where &lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;highlighter-rouge&quot;&gt;filename&lt;/code&gt; is whatever file name you choose, to remind yourself what this post is about. &lt;code class=&quot;highlighter-rouge&quot;&gt;.md&lt;/code&gt; is the file extension for markdown files.&lt;/p&gt;
-
-&lt;p&gt;The first line of the file should start with a single hash character, then a space, then your title. This is how you create a “&lt;em&gt;level 1 heading&lt;/em&gt;” in markdown. Then you can create level 2, 3, etc headings as you wish but repeating the hash character, such as you see in the line &lt;code class=&quot;highlighter-rouge&quot;&gt;## File names&lt;/code&gt; above.&lt;/p&gt;
-
-&lt;h2 id=&quot;basic-formatting&quot;&gt;Basic formatting&lt;/h2&gt;
-
-&lt;p&gt;You can use &lt;em&gt;italics&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;code font text&lt;/code&gt;, and create &lt;a href=&quot;https://www.markdownguide.org/cheat-sheet/&quot;&gt;links&lt;/a&gt;. Here’s a footnote &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Here’s a horizontal rule:&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;lists&quot;&gt;Lists&lt;/h2&gt;
-
-&lt;p&gt;Here’s a list:&lt;/p&gt;
-
+&lt;h3 id=&quot;mean-squared-error-mse&quot;&gt;Mean Squared Error (MSE)&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;item 1&lt;/li&gt;
-  &lt;li&gt;item 2&lt;/li&gt;
+  &lt;li&gt;MSE is the most commonly used metric&lt;/li&gt;
+  &lt;li&gt;Follows a &lt;strong&gt;parabolic curve&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Optimal constant -&amp;gt; Mean value of the target column&lt;/li&gt;
+  &lt;li&gt;Error is always greater than 0 and 0 for a perfect model&lt;/li&gt;
+  &lt;li&gt;Sensitive to outliers, as the values tend to be more biased towards the outliers&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;And a numbered list:&lt;/p&gt;
+&lt;h3 id=&quot;root-mean-squared-error-rmse&quot;&gt;Root Mean Squared Error (RMSE)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RMSE = sqrt(MSE)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Square root is taken to make the scale of the error same as the scale of the target&lt;/li&gt;
+  &lt;li&gt;Every minimiser of MSE is also a minimiser of RMSE i.e. MSE(a) &amp;gt; MSE(b) implies RMSE(a) &amp;gt; RMSE(b)&lt;/li&gt;
+  &lt;li&gt;We can minimise for MSE instead of RMSE; however this is not true for gradient based methods&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;item 1&lt;/li&gt;
-  &lt;li&gt;item 2&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&quot;r-squared&quot;&gt;R-Squared&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;It’s difficult to judge whether our model is good or bad just by looking at the values of MSE &amp;amp; RMSE&lt;/li&gt;
+  &lt;li&gt;So, we should compare it against the baseline model which is mean for MSE &amp;amp; RMSE
+&lt;img src=&quot;https://i.imgur.com/Lffwcqb.png&quot; alt=&quot;R-squared&quot; /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;When MSE is 0 ie the numerator is 0, then R-squared is 1&lt;/li&gt;
+      &lt;li&gt;When our model performs just like the baseline model or worse, then R-squared is 0&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;To minimise R-squared we can still minimise MSE&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&quot;boxes-and-stuff&quot;&gt;Boxes and stuff&lt;/h2&gt;
+&lt;h3 id=&quot;mean-absolute-error-mae&quot;&gt;Mean Absolute Error (MAE)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;MAE is less sensitive than MSE for outliers&lt;/li&gt;
+  &lt;li&gt;Optimal constant -&amp;gt; Median of the target column&lt;/li&gt;
+  &lt;li&gt;If there are outliers use MAE, but if there are unexpected values that is useful use MSE&lt;/li&gt;
+&lt;/ul&gt;
 
+&lt;h3 id=&quot;mean-absolute-percentage-error-mape&quot;&gt;Mean Absolute Percentage Error (MAPE)&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/YYMpqUY.jpg&quot; alt=&quot;MAPE&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mean Absolute Percentage Error (MAPE) is a weighted version of MAE&lt;/li&gt;
+  &lt;li&gt;Optimal constant (MAPE) =&amp;gt; Weighted median of the target values&lt;/li&gt;
+  &lt;li&gt;MAPE is useful if you are interested in minimising the relative error rather than absolute error. For example, if the error between 9 &amp;amp; 10 is much worse than error between 999 &amp;amp; 1000, we can use this loss function&lt;/li&gt;
+  &lt;li&gt;MAPE is undefined when the actual value is 0&lt;/li&gt;
+  &lt;li&gt;MAPE values can grow very large if the actual values (denominator) themselves are very low&lt;/li&gt;
+  &lt;li&gt;MAPE is biased towards predictions that are lower than the actual values&lt;/li&gt;
+  &lt;li&gt;MAPEs greater than 100% can occur.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;This is a quotation&lt;/p&gt;
+  &lt;p&gt;yhat=20, yact=10, n=1 then MAPE = 50%&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;div class=&quot;Toast Toast--warning googoo&quot;&gt;
-   &lt;span class=&quot;Toast-icon&quot;&gt;&lt;svg class=&quot;octicon octicon-alert&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;
-   &lt;span class=&quot;Toast-content&quot;&gt;You can include alert boxes&lt;/span&gt;
-&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;yhat=10, yact=20, n=1 then MAPE = 100%&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;…and…&lt;/p&gt;
+&lt;h3 id=&quot;mean-squared-percentage-error-mspe&quot;&gt;Mean Squared Percentage Error (MSPE)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Mean Squared Percentage Error (MSPE) is a weighted version of MSE&lt;/li&gt;
+  &lt;li&gt;As the target value for both of them increases, the curves flatten out&lt;/li&gt;
+  &lt;li&gt;Optimal constant (MSPE) =&amp;gt; Weighted mean of the target values&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;div class=&quot;Toast&quot;&gt;
-   &lt;span class=&quot;Toast-icon&quot;&gt;&lt;svg class=&quot;octicon octicon-info&quot; viewBox=&quot;0 0 14 16&quot; version=&quot;1.1&quot; width=&quot;14&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;
-   &lt;span class=&quot;Toast-content&quot;&gt;You can include info boxes&lt;/span&gt;
-&lt;/div&gt;
+&lt;h3 id=&quot;root-mean-square-logarithmic-error-rmsle&quot;&gt;Root Mean Square Logarithmic Error (RMSLE)&lt;/h3&gt;
+&lt;p&gt;[RMSLE](https://hrngok.github.io/posts/metrics/#Root-Mean-Squared-Logaritmic-Error-(RMSLE)&lt;/p&gt;
 
-&lt;h2 id=&quot;images&quot;&gt;Images&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RMSLE = RMSE(log(y_true+1), log(y_pred+1))&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/notes/images/logo.png&quot; alt=&quot;&quot; title=&quot;fast.ai's logo&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
-
-&lt;p&gt;You can format text and code per usual&lt;/p&gt;
-
-&lt;p&gt;General preformatted text:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Do a thing
-do_thing()
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from sklearn.metrics import mean_squared_log_error
+np.sqrt(mean_squared_log_error(y_true, y_pred))
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Python code and output:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;RMSE is the Root Mean Squared Error of the log-transformed predicted and log-transformed actual values.&lt;/li&gt;
+  &lt;li&gt;Works for non-negative values only. A constant is added to the predictions and actual values in case the values are 0 as logarithm(0) is not defined&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Prints '2'
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;p&gt;&lt;strong&gt;When to Use?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cares about &lt;em&gt;relative error more than absolute error&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;We don’t want to penalize big differences when both the predicted and the actual are big numbers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Acutal=30, Predicted=40, RMSE=10, RMSLE=0.27
+Actual=300, Predicted=400, RMSE=100, RMSLE=0.28
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2
+&lt;ul&gt;
+  &lt;li&gt;We want to penalize under estimates more than over estimates&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Actual = 600, Predicted = 1000, RMSLE = 0.51
+Actual = 1000, Predicted = 1400, RMSLE = 0.36
+
+Sales &amp;amp; Inventory products, where having extra supply might be more preferable to not being able to providing product as much as the demand
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Formatting text as shell commands:&lt;/p&gt;
+&lt;h3 id=&quot;poisson-loss&quot;&gt;Poisson Loss&lt;/h3&gt;
+&lt;p&gt;The Poisson loss is a loss function used for regression when modeling count data.
+&lt;img src=&quot;https://i.imgur.com/Ydl0D4l.png&quot; alt=&quot;poisson_loss&quot; /&gt;
+Use the Poisson loss when you believe that the target value comes from a Poisson distribution and want to model the rate parameter conditioned on some input. Example - number of customers entering a shop, number of emails in a day, etc&lt;/p&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello world&quot;&lt;/span&gt;
-./some_script.sh &lt;span class=&quot;nt&quot;&gt;--option&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;value&quot;&lt;/span&gt;
-wget https://example.com/cat_photo1.png
+&lt;h2 id=&quot;regression-loss&quot;&gt;Regression Loss&lt;/h2&gt;
+&lt;h3 id=&quot;huber-loss&quot;&gt;Huber Loss&lt;/h3&gt;
+&lt;p&gt;Huber Loss is a combination of MAE &amp;amp; MSE. It is quadratic for smaller errors and linear otherwise i.e it acts like MSE for error closer to 0 and like MAE elsewhere. It is &lt;code class=&quot;highlighter-rouge&quot;&gt;differentiable at 0&lt;/code&gt; unlike MAE. How small that error has to be to make it quadratic depends on a hyperparameter, &lt;code class=&quot;highlighter-rouge&quot;&gt;𝛿&lt;/code&gt; (delta). It approaches &lt;strong&gt;MAE when 𝛿 ~ 0 and MSE when 𝛿 ~ ∞.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/1050/1*0eoiZGyddDqltzzjoyfRzA.png&quot; alt=&quot;Huber Loss&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/1008/1*jxidxadWSMLvwLDZz2mycg.png&quot; alt=&quot;Huber Loss&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;huber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The downside being that we might need to train the hyper parameter 𝛿 (delta) which is an iterative process.&lt;/p&gt;
+
+&lt;h3 id=&quot;log-cosh-loss&quot;&gt;Log Cosh Loss&lt;/h3&gt;
+&lt;p&gt;Log-cosh is the logarithm of the hyperbolic cosine of the prediction error.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/872/1*hj5n5273jYX7rclO7bnfJg.png&quot; alt=&quot;Formula&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It acts like a &lt;em&gt;quadratic loss for smaller values of x&lt;/em&gt; and &lt;em&gt;a shifted version of abs(x) for larger values of x&lt;/em&gt;. It is also twice differentiable, which is very useful for methods like XGBoost which use Hessian matrix for optimisation.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;logcosh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cosh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Formatting text as YAML:&lt;/p&gt;
+&lt;h2 id=&quot;classification-metrics&quot;&gt;Classification Metrics&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Soft Labels - Classifier’s probability scores&lt;/li&gt;
+  &lt;li&gt;Hard Labels - Label associated with a prediction; usually argmax(soft_labels)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;value&lt;/span&gt;
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;another_key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;another&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;value&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;matthews-correlation-coefficient&quot;&gt;Matthews Correlation Coefficient&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://lettier.github.io/posts/2016-08-05-matthews-correlation-coefficient.html&quot;&gt;Matthews Correlation Coefficient&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://latex2image.joeraut.com/output/img-39cca6d7337bc35d.png&quot; alt=&quot;MCC&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Used for binary classification&lt;/li&gt;
+  &lt;li&gt;It is regarded as a balanced measure which can be used even if the &lt;em&gt;classes are of very different sizes.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MCC is in essence a correlation coefficient between the observed and predicted binary classifications&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;A coefficient of +1 represents a perfect prediction (&lt;em&gt;FP=FN=0&lt;/em&gt;), 0 no better than random prediction and −1(&lt;em&gt;TP=TN=0&lt;/em&gt;) indicates total disagreement between prediction and observation.&lt;/li&gt;
+  &lt;li&gt;MCC is also perfectly &lt;em&gt;symmetric&lt;/em&gt;, so no class is more important than the other; if you switch the positive and negative, you’ll still get the same value.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;f1-score&quot;&gt;F1-Score&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/rejpalcz/best-loss-function-for-f1-score-metric&quot;&gt;F1-Score&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;precision&quot;&gt;Precision&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/948/1*HGd3_eAJ3-PlDQvn-xDRdg.png&quot; alt=&quot;Precision&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Precision talks about how precise/accurate your model is out of those predicted positive, how many of them are actual positive.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Precision is a good measure to use if the cost of false positive is high&lt;/em&gt; Eg. In a spam detector, if a non-spam mail is classified as spam, then the user might lose an important mail.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;recall&quot;&gt;Recall&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/836/1*dXkDleGhA-jjZmZ1BlYKXg.png&quot; alt=&quot;Recall&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Recall actually calculates how many of the actual positives our model capture &lt;em&gt;through labeling it as Positive&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Recall is a good measure to use if the cost of false negative is high&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;accuracy&quot;&gt;Accuracy&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;It is the fraction of correctly classified objects&lt;/li&gt;
+  &lt;li&gt;The best constant for accuracy =&amp;gt; Always predicting the class with highest frequency&lt;/li&gt;
+  &lt;li&gt;Accuracy also &lt;em&gt;doesn’t care how how confident the classifier is in the predictions&lt;/em&gt; i.e. it doesn’t
+care about the predicted class probabilities. It is harder to optimise and it only cares about the class labels.&lt;/li&gt;
+  &lt;li&gt;It is most used when all the classes are equally important.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Accuracy = (TP + TN) / (TP + TN + FP + FN)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;logloss&quot;&gt;LogLoss&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;LogLoss cares about soft labels i.e. class probabilities. Log Loss takes into account the uncertainty of your prediction based on how much it varies from the actual label.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The probabilities always sum upto 1
+&lt;img src=&quot;http://wiki.fast.ai/images/math/8/a/a/8aa1e513366a2046bee816f7a0f8dd1c.png&quot; alt=&quot;Log Loss&quot; /&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;M - number of possible class labels (dog, cat, fish)&lt;/li&gt;
+      &lt;li&gt;log - the natural logarithm&lt;/li&gt;
+      &lt;li&gt;y - a binary indicator (0 or 1) of whether class label c is the correct classification for observation o&lt;/li&gt;
+      &lt;li&gt;p - the model’s predicted probability that observation o is of class c
+&lt;img src=&quot;http://wiki.fast.ai/images/4/43/Log_loss_graph.png&quot; alt=&quot;Log Loss Plot&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;LogLoss hugely penalises wrong answers as can be seen in the above graph (actual class=1). As we move towards the correct prediction the loss decreases &amp;amp; there’s an upward curve when we predict the class as 0&lt;/li&gt;
+  &lt;li&gt;Optimal Constant (LogLoss) =&amp;gt; Set probabilities as frequency of the classes. [0.1, 0.9] if number of class1 samples is 10 and number of class2 samples is 90.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;auc-roc&quot;&gt;AUC ROC&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Tries all possible values as threshold &amp;amp; then aggregates their scores.&lt;/li&gt;
+  &lt;li&gt;Used only for binary tasks. Depends on the ordering of predictions, not on absolute values.&lt;/li&gt;
+  &lt;li&gt;ROC is a probability curve and AUC represents degree or measure of separability.&lt;/li&gt;
+  &lt;li&gt;Random prediction leads to AUC = 0.5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;auc-roc-curve&quot;&gt;AUC ROC Curve&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;An ROC curve plots TPR vs. FPR at different classification thresholds. Lowering the classification threshold classifies more items as positive, thus increasing both False Positives and True Positives.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;pairs-ordering&quot;&gt;Pairs Ordering&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;It is the ratio of correctly ordered pair upon total number of pairs. &lt;em&gt;Ordering/Sorting of samples based on score is important&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;AUC is the probability that score for the false positive will be greater than the score for true positive.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;AUC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# correctly ordered pairs / # total number of pairs
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Example - Suppose the ordering based on probability score is [TP, FP, TP, TP, FP, FP] then there are 7 instances/pairs when score(FP) &amp;gt; score(TP) out of 9 possible pairs. So, AUC = 7/9
+    &lt;ul&gt;
+      &lt;li&gt;TP is when a model has correctly classified a sample as positive class&lt;/li&gt;
+      &lt;li&gt;FP is when a model has wrongly classified a sample as positive class&lt;/li&gt;
+      &lt;li&gt;TN is when a model has correctly classified a sample as negative class&lt;/li&gt;
+      &lt;li&gt;FN is when a model has wrongly classified a sample as negative class&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;quiz&quot;&gt;Quiz&lt;/h4&gt;
+&lt;p&gt;How would multiplying all of the predictions from a given model by 2.0 (for example, if the model predicts 0.4, we multiply by 2.0 to get a prediction of 0.8) change the model’s performance as measured by AUC?&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;No change. AUC only cares about relative prediction scores. AUC is based on the relative predictions, so any transformation of the predictions that preserves the relative ranking has no effect on AUC. This is clearly not the case for other metrics such as squared error, log loss, or prediction bias (discussed later).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;LogLoss value for N number of classes with constant prediction.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;log(N)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;cohens-kappa&quot;&gt;Cohen’s Kappa&lt;/h3&gt;
+&lt;p&gt;The Kappa statistic (or value) is a metric that compares an &lt;strong&gt;Observed Accuracy&lt;/strong&gt; with an &lt;strong&gt;Expected Accuracy (random chance)&lt;/strong&gt;. In addition, it takes into account random chance (agreement with a random classifier), which generally means it is less misleading than simply using accuracy as a metric.&lt;/p&gt;
+
+&lt;p&gt;The kappa statistic is often used as a measure of reliability between two human raters. In supervised learning, one of the raters reflects “ground truth”, and the other “rater” is the machine learning classifier.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Cohen’s Kappa = 1 - [(1 - accuracy) / (1 - baseline)]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Alternativey, since &lt;code class=&quot;highlighter-rouge&quot;&gt;error=1 - accuracy&lt;/code&gt;,&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Cohen’s Kappa = 1 - (error / baseline_error)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It can also, be written as -&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Kappa = (Observed Accuracy - Expected Accuracy) / (1 - Expected Accuracy)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Cohen’s Kappa ranges from [-1, 1]&lt;/p&gt;
+&lt;h4 id=&quot;example&quot;&gt;Example&lt;/h4&gt;
+&lt;p&gt;Assume Confusion Matrix for a binary classification task as follows&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;Column 1&lt;/th&gt;
-      &lt;th&gt;Column 2&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Cats&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Dogs&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;A thing&lt;/td&gt;
-      &lt;td&gt;Another thing&lt;/td&gt;
+      &lt;td&gt;Cats&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Dogs&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;8&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&quot;tweetcards&quot;&gt;Tweetcards&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Observed Accuracy&lt;/strong&gt;&lt;/p&gt;
 
-&lt;div class=&quot;jekyll-twitter-plugin&quot;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Altair 4.0 is released! &lt;a href=&quot;https://t.co/PCyrIOTcvv&quot;&gt;https://t.co/PCyrIOTcvv&lt;/a&gt;&lt;br /&gt;Try it with:&lt;br /&gt;&lt;br /&gt;  pip install -U altair&lt;br /&gt;&lt;br /&gt;The full list of changes is at &lt;a href=&quot;https://t.co/roXmzcsT58&quot;&gt;https://t.co/roXmzcsT58&lt;/a&gt; ...read on for some highlights. &lt;a href=&quot;https://t.co/vWJ0ZveKbZ&quot;&gt;pic.twitter.com/vWJ0ZveKbZ&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jake VanderPlas (@jakevdp) &lt;a href=&quot;https://twitter.com/jakevdp/status/1204765621767901185?ref_src=twsrc%5Etfw&quot;&gt;December 11, 2019&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-&lt;/div&gt;
+&lt;p&gt;It is simply the number of instances that were classified correctly throughout the entire confusion matrix ie the number of instances when the ground truth and classifier both agreed to a particular class for a sample.&lt;/p&gt;
 
-&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Total Number of Instances = 30&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;div class=&quot;footnotes&quot;&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Observed Accuracy = (10+8 ) / 30 = 0.6&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Expected Accuracy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Marginal Frequency (Cats) = [(10+7) * (10+5)] / 30 = 8.5&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Marginal Frequency (Dogs) = [(7+8) * (5+8)] / 30 = 6.5&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Expected Accuracy = [Marginal Frequency (Cats) + Marginal Frequency (Dogs)] / 30 = 0.5&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Kappa&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Kappa Score = (observed accuracy - expected accuracy)/(1 - expected accuracy)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Kappa Score = (0.60 - 0.50) / (1 - 0.50) = 0.20&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;quadratic-weighted-kappa&quot;&gt;Quadratic Weighted Kappa&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://kagglesolutions.com/r/evaluation-metrics--quadratic-weighted-kappa&quot;&gt;Quadratic Weighted Kappa&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from sklearn.metrics import cohen_kappa_score, confusion_matrix
+qwk = cohen_kappa_score(actuals, preds, weights=&quot;quadratic&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;target--metric&quot;&gt;Target &amp;amp; Metric&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Target Metric is what we want to optimise. It is how the model is eventually evaluated.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;But no one really knows how to optimise target metrics efficiently. So, instead, we use Loss Functions, which is easy to optimise. Example it is not easy to optimise Accuracy Score, so we optimise for LogLoss &amp;amp; eventually evaluate our model using Accuracy Score.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;However, sometimes, the models can however optimise target metrics directly example MSE, LogLoss.&lt;/li&gt;
+  &lt;li&gt;Sometimes it is not possible to optimise target metric directly but we can somehow preprocess the train data and use a model with a metric or loss function which is easy to optimise. For example, optimising MSPE or MAPE is not easy, but we can instead optimise MSE&lt;/li&gt;
+  &lt;li&gt;Sometimes, we will optimise incorrect metrics but we will post-process to fit evaluation metric better&lt;/li&gt;
+  &lt;li&gt;A technique that always works is early stopping. Suppose that we have to optimise for M2, but cannot optimise directly. So, we instead optimise for metric M1 and monitor metric M2 on validation set. We stop when the model starts overfitting on M2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;regression-metrics-optimization&quot;&gt;Regression Metrics Optimization&lt;/h2&gt;
+&lt;h3 id=&quot;mse&quot;&gt;MSE&lt;/h3&gt;
+&lt;p&gt;Most of the libraries have MSE implemented as a loss function, so we can directly optimise for MSE. Synonyms - L2 Loss&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tree-Based :- LightGBM, RandomForest and XGBoost&lt;/li&gt;
+  &lt;li&gt;Linear-Model :- SGDRegressor, Vowpal Vabbit&lt;/li&gt;
+  &lt;li&gt;Neural Nets :- Pytorch, Keras, TF&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mae&quot;&gt;MAE&lt;/h3&gt;
+&lt;p&gt;MAE is another commonly used metric, so most of the libraries can optimise for MAE directly. Synonyms - L1 Loss, Quantile loss, Huber loss&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tree-Based :- LightGBM, RandomForest, &lt;del&gt;XGBoost&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;Neural Nets :- Pytorch, Keras, TF&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rmsle&quot;&gt;RMSLE&lt;/h3&gt;
+&lt;h4 id=&quot;train&quot;&gt;Train&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Transform the target&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Fit a model with MSE loss&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;test&quot;&gt;Test&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Transform the prediction probabilities back&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;classification-metrics-optimization&quot;&gt;Classification Metrics Optimization&lt;/h2&gt;
+&lt;h3 id=&quot;logloss-1&quot;&gt;LogLoss&lt;/h3&gt;
+&lt;p&gt;Similar to MSE in terms of popularity &amp;amp; hence implemented in almost all the major libraries.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tree-Based :- LightGBM and XGBoost&lt;/li&gt;
+  &lt;li&gt;Linear-Model :- SGDRegressor, Vowpal Vabbit&lt;/li&gt;
+  &lt;li&gt;Neural Nets :- Pytorch, Keras, TF&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;auc&quot;&gt;AUC&lt;/h3&gt;
+&lt;p&gt;Optimise pairwise loss for optimising AUC&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tree-Based :- LightGBM and XGBoost&lt;/li&gt;
+  &lt;li&gt;Neural Nets :- Pytorch, Keras, TF&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;f1-score-1&quot;&gt;F1-Score&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def f1_metric(y_true, y_pred):
+    y_pred = K.round(y_pred)
+    tp = K.sum(K.cast(y_true*y_pred, 'float'), axis=0)
+    tn = K.sum(K.cast((1-y_true)*(1-y_pred), 'float'), axis=0)
+    fp = K.sum(K.cast((1-y_true)*y_pred, 'float'), axis=0)
+    fn = K.sum(K.cast(y_true*(1-y_pred), 'float'), axis=0)
+
+    p = tp / (tp + fp + K.epsilon())
+    r = tp / (tp + fn + K.epsilon())
+
+    f1 = 2*p*r / (p+r+K.epsilon())
+    f1 = tf.where(tf.is_nan(f1), tf.zeros_like(f1), f1)
+    return K.mean(f1)
+
+def f1_loss(y_true, y_pred):
+    
+    tp = K.sum(K.cast(y_true*y_pred, 'float'), axis=0)
+    tn = K.sum(K.cast((1-y_true)*(1-y_pred), 'float'), axis=0)
+    fp = K.sum(K.cast((1-y_true)*y_pred, 'float'), axis=0)
+    fn = K.sum(K.cast(y_true*(1-y_pred), 'float'), axis=0)
+
+    p = tp / (tp + fp + K.epsilon())
+    r = tp / (tp + fn + K.epsilon())
+
+    f1 = 2*p*r / (p+r+K.epsilon())
+    f1 = tf.where(tf.is_nan(f1), tf.zeros_like(f1), f1)
+    return 1 - K.mean(f1)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;mean-encoding&quot;&gt;Mean Encoding&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://maxhalford.github.io/blog/target-encoding-done-the-right-way/&quot;&gt;Link 1&lt;/a&gt;
+&lt;a href=&quot;https://www.kaggle.com/vprokopev/mean-likelihood-encodings-a-comprehensive-study&quot;&gt;Link 2&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We encode each level of categorical variable with corresponding target mean.&lt;/li&gt;
+  &lt;li&gt;The more complicated and non linear is the feature target dependency more effective is mean encoding&lt;/li&gt;
+  &lt;li&gt;Greater the number of level in categorical features is a good indicator of using mean encodings&lt;/li&gt;
+  &lt;li&gt;Prone to overfitting if the levels in categorical features in train and test datasets are different&lt;/li&gt;
+  &lt;li&gt;Unlike other encoding techniques, &lt;em&gt;mean encoding imposes an ordering&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ways-to-construct-mean-encoding&quot;&gt;Ways to construct mean encoding&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Likelihood = #ones / (#ones + #zeros)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Weight of Evidence = log(#ones / #zeros) * 100&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Count = #ones&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Difference = #ones - #zeros&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;possible-leaks&quot;&gt;Possible Leaks&lt;/h3&gt;
+&lt;p&gt;Calculate &lt;code class=&quot;highlighter-rouge&quot;&gt;means&lt;/code&gt; only on the train data. Then calculate mean encodings using by applying map function on both the train &amp;amp; test data.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# col = categorical feature
+# target = target column
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;means&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'_mean_target'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;means&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'_mean_target'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;means&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;regularization&quot;&gt;Regularization&lt;/h3&gt;
+&lt;h4 id=&quot;expanding-mean&quot;&gt;Expanding Mean&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Introduces least amount of leakage&lt;/li&gt;
+  &lt;li&gt;No hyper parameters to tune&lt;/li&gt;
+  &lt;li&gt;Built in CatBoost&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cumsum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'target'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cumsum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'target'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cumcnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cumcnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;train_new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'_mean_target'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cumsum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cumcnt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;regression&quot;&gt;Regression&lt;/h2&gt;
+&lt;p&gt;Encode your categorical variable with the mean of the target. For every category, you calculate the corresponding mean of the target (among this category) and replace the value of a category with this mean. More flexible compared to classification tasks as you can use a variety of statistics like median, standard deviations, percentiles, etc.&lt;/p&gt;</content><author><name></name></author><summary type="html">How to win a data science competition (Week 3)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/notes/images/metrics.png" /><media:content medium="image" url="/notes/images/metrics.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to win a data science competition (Week 2)</title><link href="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html" rel="alternate" type="text/html" title="How to win a data science competition (Week 2)" /><published>2019-06-19T00:00:00-05:00</published><updated>2019-06-19T00:00:00-05:00</updated><id>/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2</id><content type="html" xml:base="/notes/datascience/kaggle/eda/cross-validation/2019/06/19/week2.html">&lt;h1 id=&quot;how-to-win-a-data-science-competition-week-2&quot;&gt;How to win a data science competition (Week 2)&lt;/h1&gt;
+
+&lt;h1 id=&quot;1-eda&quot;&gt;1. EDA&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Better understand the data&lt;/li&gt;
+  &lt;li&gt;Build an intuition about the data&lt;/li&gt;
+  &lt;li&gt;Generate Hypothesis&lt;/li&gt;
+  &lt;li&gt;Gain insights&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;11-building-intuition-about-data&quot;&gt;1.1 Building intuition about data&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Get domain knowledge
+    &lt;ul&gt;
+      &lt;li&gt;Understand the data &amp;amp; how people usually tackle the problem&lt;/li&gt;
+      &lt;li&gt;Understand different features, how they relate with each other &amp;amp; how does it affect the target feature&lt;/li&gt;
+      &lt;li&gt;It helps to deeper understand the problem&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Check if the data is intuitive/satisfactory
+    &lt;ul&gt;
+      &lt;li&gt;And agrees with domain knowledge&lt;/li&gt;
+      &lt;li&gt;Looking at quantiles is useful&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Understand how the data was generated
+    &lt;ul&gt;
+      &lt;li&gt;Crucial to setup proper validation&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;12-anonymised-data&quot;&gt;1.2 Anonymised Data&lt;/h2&gt;
+
+&lt;h3 id=&quot;121-explore-individual-features&quot;&gt;1.2.1 Explore Individual Features&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Guess the meaning of the features&lt;/li&gt;
+  &lt;li&gt;Guess the types of the column&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Play around with&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pd.Series.value_counts
+pd.DataFrame.dtypes
+mean and standard deviation
+pd.DataFrame.sort_values(by=&quot;&quot;)
+np.diff
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You never know what you might discover&lt;/p&gt;
+
+&lt;h2 id=&quot;13-visualization-tools&quot;&gt;1.3 Visualization Tools&lt;/h2&gt;
+
+&lt;h3 id=&quot;131-visualization-of-individual-features&quot;&gt;1.3.1 Visualization of Individual Features&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.dummies.com/education/math/statistics/how-histograms-can-misrepresent-statistical-data/&quot;&gt;Misleading Histograms&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# if degenerate graph; like all values pointing to 0
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# horizontal line implies repeating values &amp;amp; the missing vertical lines implies well shuffled data
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value_counts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isnull&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;132-visualization-of-feature-relations&quot;&gt;1.3.2 Visualization of feature relations&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Scatter Plots
+    &lt;ul&gt;
+      &lt;li&gt;Can be used to check if the data distribution between train and test set are the same&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Scatter Matrix&lt;/li&gt;
+  &lt;li&gt;Correlation Matrix&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;2-data-cleaning&quot;&gt;2. Data Cleaning&lt;/h1&gt;
+
+&lt;p&gt;Concatenating train and test data first&lt;/p&gt;
+
+&lt;h3 id=&quot;21-remove-constant-columns&quot;&gt;2.1 Remove constant columns&lt;/h3&gt;
+
+&lt;p&gt;Remove features that have only 1 value for the entire feature.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;traintest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nunique&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Sometimes it might happen that there is constant value in the train data but multiple values for that feature in the test data.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Remove that feature&lt;/li&gt;
+  &lt;li&gt;Train multiple models, each model for a different value in that feature&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;22-remove-duplicated-columns&quot;&gt;2.2 Remove duplicated columns&lt;/h2&gt;
+
+&lt;h3 id=&quot;221-numerical&quot;&gt;2.2.1 Numerical&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;traintest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop_duplicates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;222-categorical&quot;&gt;2.2.2 Categorical&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# label encode each categorical feature as numeric &amp;amp; repeat as above
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;categorical_feats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;traintest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;traintest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;factorize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;traintest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop_duplicates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I usually look at the &lt;code class=&quot;highlighter-rouge&quot;&gt;value_counts&lt;/code&gt; of each feature. If the feature has low cardinality, then category-wise count for 2 same features will also be the same.&lt;/p&gt;
+
+&lt;h2 id=&quot;23-others&quot;&gt;2.3 Others&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Find duplicated rows and understand why they are duplicated&lt;/li&gt;
+  &lt;li&gt;Check if the dataset is shuffled&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;3-validation-types&quot;&gt;3. Validation types&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Holdout - Divide train into train and validation such that each sample belongs either to train or validation. There should be no repetition. In case, there are &lt;strong&gt;duplicated samples&lt;/strong&gt; in the data, it might happen that one of the duplicated example is in val, this would lead to higher scores and improper hyperparameter selection.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model_selection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ShuffleSplit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;K-Fold - K times slower than Holdout. Different than repeating Holdout K times in the sense, that it’s entirely possible that a sample may never be a part of validation set or might be a part of validation set multiple times. K-Fold however ensures that each sample is a part of validation set only once.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model_selection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Kfold&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Leave-one-out
+    &lt;ul&gt;
+      &lt;li&gt;Iterate over samples: retrain the model on all samples except current sample, predict for the current sample. You will need to retrain the model N times (if N is the number of samples in the dataset).&lt;/li&gt;
+      &lt;li&gt;In the end you will get LOO predictions for every sample in the trainset and can calculate loss.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Small amount of data
+Faster model to train&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Stratification - Preserves same target distribution over different folds
+    &lt;ul&gt;
+      &lt;li&gt;Small training data&lt;/li&gt;
+      &lt;li&gt;Unbalanced datasets&lt;/li&gt;
+      &lt;li&gt;Multiclass classification problem&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;4-data-splitting-strategies&quot;&gt;4. Data splitting strategies&lt;/h1&gt;
+
+&lt;p&gt;We should make train/validation split to mimic the train/test split.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Random/rowwise split&lt;/li&gt;
+  &lt;li&gt;Time based split - Similar are moving window validation split&lt;/li&gt;
+  &lt;li&gt;Id-based split&lt;/li&gt;
+  &lt;li&gt;Combined split&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;quizes&quot;&gt;Quizes&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Suppose we are given a huge dataset. We did a KFold validation once and noticed that scores on each fold are roughly the same. Which validation type is most practical to use?
+    &lt;ul&gt;
+      &lt;li&gt;Use holdout validation scheme as the data is homogenous&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If validation scores differ noticeably for each fold in KFold, we should stick with KFold  in order to select statistically significant changes in scores while tuning a model.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The features we generate depend on the train-test data splitting method. Is this true?
+    &lt;ul&gt;
+      &lt;li&gt;True&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Performance increase on a fixed cross-validation split guaranties performance increase on any cross-validation split. Incorrect. You can overfit to the specific CV-split. You should change your split from time to time to reduce the chance of overfitting.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;On Kaggle, make submissions which are
+    &lt;ul&gt;
+      &lt;li&gt;Performing best on validation data - Assuming that train and test data distribution is same.&lt;/li&gt;
+      &lt;li&gt;Performing best on public LB - Assuming that train and test data distribution is different.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;data-leaks&quot;&gt;Data Leaks&lt;/h2&gt;
+
+&lt;h3 id=&quot;basic-data-leaks&quot;&gt;Basic Data Leaks&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Row Based - Data may sometimes be shuffled by target variable. So simply adding row number might improve the score.&lt;/li&gt;
+  &lt;li&gt;Id Based -  Sometimes, ID may contain traces of information connected to target variable.&lt;/li&gt;
+  &lt;li&gt;Meta-Data - Example image creation date, camera resolution etc in a classical cats vs dogs contest, where cats images were taken before dogs or taken using specific camera.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">How to win a data science competition (Week 2)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/notes/images/plots.png" /><media:content medium="image" url="/notes/images/plots.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">How to win a data science competition (Week 1)</title><link href="/notes/preprocessing/feature%20generation/datascience/kaggle/2019/06/14/week1.html" rel="alternate" type="text/html" title="How to win a data science competition (Week 1)" /><published>2019-06-14T00:00:00-05:00</published><updated>2019-06-14T00:00:00-05:00</updated><id>/notes/preprocessing/feature%20generation/datascience/kaggle/2019/06/14/week1</id><content type="html" xml:base="/notes/preprocessing/feature%20generation/datascience/kaggle/2019/06/14/week1.html">&lt;h1 id=&quot;how-to-win-a-data-science-competition-week-1&quot;&gt;How to win a data science competition (Week 1)&lt;/h1&gt;
+
+&lt;p&gt;Real World ML Pipeline&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Understanding of business problem&lt;/li&gt;
+  &lt;li&gt;Problem Formalization&lt;/li&gt;
+  &lt;li&gt;Data Collection&lt;/li&gt;
+  &lt;li&gt;Data Preprocessing&lt;/li&gt;
+  &lt;li&gt;Modelling&lt;/li&gt;
+  &lt;li&gt;Way to evaluate model in real life&lt;/li&gt;
+  &lt;li&gt;Way to deploy model&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Data Science Competitions&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Problem formalization&lt;/em&gt; (might be necessary sometimes)&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Data Collection&lt;/em&gt; (possible in few competitions)&lt;/li&gt;
+  &lt;li&gt;Data Preprocessing&lt;/li&gt;
+  &lt;li&gt;Modelling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Differences&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usually the hardest part of &lt;em&gt;problem formalisation and evaluation metrics&lt;/em&gt; is already done.&lt;/li&gt;
+  &lt;li&gt;Deployment is out of scope.&lt;/li&gt;
+  &lt;li&gt;Model complexity, speed &amp;amp; memory consumption doesn’t matter&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Resources&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://towardsdatascience.com/an-implementation-and-explanation-of-the-random-forest-in-python-77bf308a9b76&quot;&gt;Random Forest&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@namanbhandari/extratreesclassifier-8e7fc0502c7&quot;&gt;ExtraTrees Classifier&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1-review&quot;&gt;1. Review&lt;/h2&gt;
+
+&lt;h3 id=&quot;11-linear-model&quot;&gt;1.1 Linear Model&lt;/h3&gt;
+
+&lt;p&gt;Especially good for sparse high dimensional data.
+Support Vector Machine (SVM) is a linear model with special loss function. Even with “kernel trick”, it’s still linear in new, extended space.
+Libraries: Scikit-learn and Vowpal Wabbit&lt;/p&gt;
+
+&lt;h3 id=&quot;12-tree-based-model&quot;&gt;1.2 Tree Based Model&lt;/h3&gt;
+
+&lt;p&gt;Decision trees used divide-and-conquer technique to recursively divide spaces into sub-spaces. Tree-based models can work very well with tabular data.&lt;/p&gt;
+
+&lt;p&gt;However, tree-based approaches &lt;strong&gt;&lt;em&gt;cannot easily capture linear dependencies&lt;/em&gt;&lt;/strong&gt; since it requires many splits.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://imgur.com/hbUfO5K.png&quot; alt=&quot;Imgur&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ExtraTrees classifier always tests random splits over fraction of features (in contrast to RandomForest, which tests all possible splits over fraction of features)&lt;/p&gt;
+
+&lt;p&gt;Libraries: Scikit-learn, XGBoost, LightGBM&lt;/p&gt;
+
+&lt;h3 id=&quot;13-no-free-lunch-theorem&quot;&gt;1.3 No Free Lunch Theorem&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;“&lt;em&gt;There is no method which outperforms all others for all tasks&lt;/em&gt;“&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;“&lt;em&gt;For every method we can construct a task for which this particular method will not be the best&lt;/em&gt;“&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/YP4Lhyf.png&quot; alt=&quot;Decision Boundaries&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SVMs have a linear boundaries&lt;/li&gt;
+  &lt;li&gt;Decision trees have horizontal and vertical splits&lt;/li&gt;
+  &lt;li&gt;Random Forest has many more of these horizontal and vertical axes and are relatively smoother&lt;/li&gt;
+  &lt;li&gt;Naive Bayes has a smoother boundary compared to Neural Networks&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-preprocessing&quot;&gt;2. Preprocessing&lt;/h2&gt;
+
+&lt;h2 id=&quot;21-numeric-features&quot;&gt;2.1 Numeric Features&lt;/h2&gt;
+
+&lt;p&gt;Preprocessing depends on the type of model we use.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Tree based models (Decision Trees)&lt;/li&gt;
+  &lt;li&gt;Non-tree based models (KNNs, Neural Nets, Linear Models)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;211-scaling&quot;&gt;2.1.1 Scaling&lt;/h3&gt;
+
+&lt;p&gt;Non-tree based models are affected by the scale of the features.
+Different feature scaling results in different models quality. On the other hand, Decision Trees try to find the best split for a feature, no matter the scale.&lt;/p&gt;
+
+&lt;p&gt;Explanation&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nearest Neighbours
+    &lt;ul&gt;
+      &lt;li&gt;The scale of features impacts the distance between samples.&lt;/li&gt;
+      &lt;li&gt;With different scaling of the features nearest neighbours for a selected object can be very different.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Linear Models / Neural Networks
+    &lt;ul&gt;
+      &lt;li&gt;Amount of regularization applied to a feature depends on the feature’s scale.&lt;/li&gt;
+      &lt;li&gt;Optimization methods can perform differently depending on relative scale of features.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Others
+    &lt;ul&gt;
+      &lt;li&gt;KMeans, SVMs, LDA, PCA, etc&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;MinMax Scaler - The distribution of the feature before and after scaling remains the same. The value range is 0 to 1.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;X = (X — X.min) / (X.max — X.min)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MinMaxScaler&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Standard Scaler - We always get a standard normal distribution.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;X = (X — X.mean) / X.std&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StandardScaler&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;212-winsorization&quot;&gt;2.1.2 Winsorization&lt;/h3&gt;
+
+&lt;p&gt;Treating outliers by clipping values between two ranges - upper bound and lower bound. Say 1 &amp;amp; 99 percentile of the feature values.&lt;/p&gt;
+
+&lt;h3 id=&quot;213-rank-transformation&quot;&gt;2.1.3 Rank Transformation&lt;/h3&gt;
+
+&lt;p&gt;Sorts an array and changes their values to indices. Similar to binning.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Example:
+rank([-100, 1, 1e-5]) = [0, 1, 2]
+rank([1000, 1, 10]) = [2, 0, 1]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Linear Models, KNN and Neural Networks usually benefit from this transformation.&lt;/p&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;scipy.stats.rankdata&lt;/code&gt; to create ranks. For test data, either store the mapping of value ranges to indices or concatenate train &amp;amp; test data before applying the rank transformation.&lt;/p&gt;
+
+&lt;h3 id=&quot;214-log-transformation&quot;&gt;2.1.4 Log Transformation&lt;/h3&gt;
+
+&lt;p&gt;Helps all non-tree based models especially neural nets. .&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# log transformation
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Skewness transformation&lt;/li&gt;
+  &lt;li&gt;This transformation is non-linear and will move outliers relatively closer to other samples. Also, values near zero become more distinguishable.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;22-categorical-features&quot;&gt;2.2 Categorical Features&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://kiwidamien.github.io/encoding-categorical-variables.html&quot;&gt;Excellent article&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;221-label-encoding&quot;&gt;2.2.1 Label Encoding&lt;/h3&gt;
+
+&lt;p&gt;Works well with tree based methods. Linear methods struggle to extract meaning out of label encoded features. Categories encoded with numbers that close are to each other (usually) are not more related then categories encoded with numbers that far away from each other.&lt;/p&gt;
+
+&lt;blockquote&gt;
   &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;This is the footnote. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
+    &lt;li&gt;Categorical features are ordinal in nature&lt;/li&gt;
+    &lt;li&gt;When the number of categorical features in the dataset is huge&lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name></name></author><summary type="html">Example Markdown Post</summary></entry></feed>
+&lt;/blockquote&gt;
+
+&lt;p&gt;Methods -&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Alphabetically Sorted
+[S, C, Q] -&amp;gt; [2, 1, 3]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preprocessing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LabelEncoder&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Order of Appearance
+[S, C, Q] -&amp;gt; [1, 2, 3]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Pandas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;factorize&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;222-frequency-encoding&quot;&gt;2.2.2 Frequency Encoding&lt;/h3&gt;
+
+&lt;p&gt;Encode categories on the frequency of their occurrence. Preserves information about value distribution.
+Example:  For a given list [S, C, Q, S, S, C, Q, S, C, S] the feature column can be encoded by replacing [S, C, Q] -&amp;gt; [0.5, 0.3, 0.2]&lt;/p&gt;
+
+&lt;p&gt;Can be useful for both tree based &amp;amp; non-tree based models.&lt;/p&gt;
+
+&lt;h3 id=&quot;223-one-hot-encoding&quot;&gt;2.2.3 One hot Encoding&lt;/h3&gt;
+
+&lt;p&gt;Works best for non-tree based models. One-hot encoded features are already scaled as the maximum value is 1 and minimum value is 0. Hence, suitable for non-tree based models which suffer from scaling issues.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;On each split, trees can only separate one category from the others. So greater the number of categories, greater will be the number of splits.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;224-mean-target-encoding&quot;&gt;2.2.4 Mean Target Encoding&lt;/h3&gt;
+
+&lt;p&gt;Encoding categorical variables with a mean target value (and also other target statistics) is a popular method for working with &lt;strong&gt;&lt;em&gt;high cardinality features&lt;/em&gt;&lt;/strong&gt;, especially useful for tree-based models. Mean encodings let models converge faster. Useful when working with &lt;strong&gt;high cardinality categorical features&lt;/strong&gt;. &lt;strong&gt;&lt;em&gt;Easy to overfit.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;means&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;groupby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;means&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It is useful to apply target encoding when the number of samples of each category type belonging to the target value equal to say 1 is reasonable i.e if &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; has values only 0 and 1 &amp;amp; say for the category &lt;code class=&quot;highlighter-rouge&quot;&gt;a&lt;/code&gt; belonging to &lt;code class=&quot;highlighter-rouge&quot;&gt;x_0&lt;/code&gt; doesn’t have any target value as 1, then it’s mean will be 0.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For continous target value, feature is replaced by average target value. Example - if &lt;em&gt;profession=teacher&lt;/em&gt; is the categorical feature &amp;amp; &lt;em&gt;salary&lt;/em&gt; is target, then &lt;em&gt;teacher&lt;/em&gt; is replaced by &lt;em&gt;average salary of teachers&lt;/em&gt; in the training set&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;225-binary-encoding&quot;&gt;2.2.5 Binary Encoding&lt;/h3&gt;
+
+&lt;p&gt;Binary encoding for categorical variables, similar to onehot, but stores categories as binary bitstrings.&lt;/p&gt;
+
+&lt;p&gt;First the categories are encoded as ordinal, then those integers are converted into binary code, then the digits from that binary string are split into separate columns.  This encodes the data in fewer dimensions that one-hot, but with some distortion of the distances.&lt;/p&gt;
+
+&lt;p&gt;Different categories may share some of the same features.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-datetime&quot;&gt;3 Datetime&lt;/h2&gt;
+
+&lt;h3 id=&quot;31-periodicity&quot;&gt;3.1 Periodicity&lt;/h3&gt;
+
+&lt;p&gt;Useful to capture repetitive patterns in data. We can add features like&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Day number in week&lt;/li&gt;
+  &lt;li&gt;Month&lt;/li&gt;
+  &lt;li&gt;Season&lt;/li&gt;
+  &lt;li&gt;Year&lt;/li&gt;
+  &lt;li&gt;Second&lt;/li&gt;
+  &lt;li&gt;Minute&lt;/li&gt;
+  &lt;li&gt;Hour&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;32-time-passed-since-a-particular-event&quot;&gt;3.2 Time passed since a particular event&lt;/h3&gt;
+
+&lt;p&gt;Case 1 -&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;In this case, &lt;strong&gt;&lt;em&gt;all the samples become comparable between each other on one time scale.&lt;/em&gt;&lt;/strong&gt; Days passed since January 1, 2000.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Case 2 -&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;In this case, the date will depend on the sample we are calculating this for. For example - number of days since last holiday, number of days since last weekend, number of days to the next holiday, etc.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;33-difference-between-dates&quot;&gt;3.3 Difference between Dates&lt;/h3&gt;
+
+&lt;p&gt;Number of days between two events. Example - Subtracting &lt;em&gt;end_date - start_date&lt;/em&gt;  gives number of years loan amount was paid.&lt;/p&gt;
+
+&lt;h2 id=&quot;4-coordinates&quot;&gt;4. Coordinates&lt;/h2&gt;
+
+&lt;h3 id=&quot;41-distance-based-features&quot;&gt;4.1 Distance based Features&lt;/h3&gt;
+
+&lt;p&gt;Find out the most interesting points in the map say the best school/hospital in the town, a museum, etc and calculate distance of the samples to this point. Add them as a feature in the training and test dataset.&lt;/p&gt;
+
+&lt;h3 id=&quot;42-aggregated-statistics&quot;&gt;4.2 Aggregated Statistics&lt;/h3&gt;
+
+&lt;p&gt;Calculate aggregated statistics for objects surrounding areas such as the total number of flats in the vicinity which can then be interpreted as areas of popularity.’&lt;/p&gt;
+
+&lt;p&gt;Or you could calculate &lt;em&gt;average price flat&lt;/em&gt; grouped by say &lt;em&gt;pin code, area&lt;/em&gt; which would indicate  expensiveness.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-missing-values&quot;&gt;5. Missing Values&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Missing values can be represented in any way not necessarily as NaN. Some examples are -1, 999, , empty string, NaN, etc.&lt;/li&gt;
+  &lt;li&gt;Sometimes missing values can contain information by themselves.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;51-imputation&quot;&gt;5.1 Imputation&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use a value outside the range of the normal values for a variable. like -1 ,or -9999 etc.&lt;/li&gt;
+  &lt;li&gt;Replace with a likelihood – e.g. something that relates to the target variable.&lt;/li&gt;
+  &lt;li&gt;Replace with something which makes sense. For example - sometimes null may mean zero&lt;/li&gt;
+  &lt;li&gt;You may consider removing rows with many null values&lt;/li&gt;
+  &lt;li&gt;Try to predict missing values based on subsets of know values. For example -  in time series data, where rows are not independent of each other, then a missing value can be replaced by say averaging values from within a window&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;52-adding-isnull-column&quot;&gt;5.2 Adding isNull column&lt;/h3&gt;
+
+&lt;p&gt;For each of the numerical features we can add an &lt;code class=&quot;highlighter-rouge&quot;&gt;isNull&lt;/code&gt; column representing whether a particular row for a column in discussion contains empty values &lt;code class=&quot;highlighter-rouge&quot;&gt;(NaN, NaT, None)&lt;/code&gt;. Useful specially for tree-based methods &amp;amp; neural nets.
+The downside is that we double the number of columns.&lt;/p&gt;
+
+&lt;h3 id=&quot;53-general&quot;&gt;5.3 General&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Some models like XGBoost and CatBoost can deal with missing values out-of-box. These models have special methods to treat them and a model’s quality can benefit from it&lt;/li&gt;
+  &lt;li&gt;Do not fill NaNs before feature generation&lt;/li&gt;
+  &lt;li&gt;Impute with a feature mean/median&lt;/li&gt;
+  &lt;li&gt;Remove rows with missing values&lt;/li&gt;
+  &lt;li&gt;Reconstruct the missing values&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;54-issue-while-generating-new-feature-from-existing-feature-which-has-null-values&quot;&gt;5.4 Issue while generating new feature from existing feature which has null values&lt;/h3&gt;
+
+&lt;p&gt;Order should be -&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Missing Value Imputation -&amp;gt; Feature Generation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We should be very careful about replacing missing values before the feature generation.&lt;/p&gt;
+
+&lt;h2 id=&quot;6-feature-extraction-in-text-and-images&quot;&gt;6. Feature Extraction in Text and Images&lt;/h2&gt;
+
+&lt;h3 id=&quot;61-bag-of-words&quot;&gt;6.1 Bag of Words&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;N-grams can help utilise &lt;em&gt;local context around each word&lt;/em&gt; because n-grams encode sequences of words.&lt;/li&gt;
+  &lt;li&gt;It is called a “bag” of words, because any &lt;em&gt;information about the order or structure of words in the document is discarded&lt;/em&gt;. The model is only concerned with whether known words occur in the document, not where in the document.&lt;/li&gt;
+  &lt;li&gt;N-grams features are typically &lt;em&gt;sparse&lt;/em&gt;. N-grams deal with counts of words occurrences, and not every word can be found in a document.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Bag of words usually produces longer vectors than Word2Vec&lt;/em&gt;. Number of features in Bag of words approach is usually equal to number of unique words, while number of features in w2v is restricted to a constant, like 300 or so.&lt;/li&gt;
+  &lt;li&gt;Meaning of a value in BOW matrix is the number of a word’s occurrences in a document. Values in vectors cannot be interpreted.&lt;/li&gt;
+  &lt;li&gt;Word2Vec and Bag of words give different results. We can combine them to get more variety of results.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;611-countvectorizer&quot;&gt;6.1.1 Countvectorizer&lt;/h4&gt;
+
+&lt;p&gt;Count the occurence of each word in a given document.&lt;/p&gt;
+
+&lt;p&gt;Needs scaling at the end to be use in linear models, as most occurring words will have higher counts and assume more importance. This is overcome by tf-idf vectorizer.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;sklearn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;feature_extraction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CountVectorize&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;612-tf-idf-vectorizer&quot;&gt;6.1.2 Tf-idf vectorizer&lt;/h4&gt;
+
+&lt;p&gt;TF-IDF is applied to a matrix where each &lt;em&gt;column represents a word, each row represents a document&lt;/em&gt;, and each value shows the number of times a particular word occurred in a particular document.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;MAKING DOCUMENTS/SENTENCES OF DIFFERENT LENGTHS MORE COMPARABLE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Term Frequency measures how frequently a term occurs in a document. Since every document is different in length, it is possible that a term would appear much more times in long documents than shorter ones. Thus, the term frequency is often divided by the document length (aka. the total number of terms in the document) as a way of normalization. Term-frequency (TF) normalises sum of the column values to 1.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;BOOST MORE IMPORTANT FEATURES&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Normalizing feature by the inverse fraction of documents. In this case features corresponding to frequent words will be scaled down compared to features corresponding to rarer words.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;IDF(t) = log(Total number of documents / Number of documents with term t in it).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;IDF scales features inversely proportionally to a number of word occurrences over documents&lt;/p&gt;
+
+&lt;h2 id=&quot;7-geographic-data&quot;&gt;7. Geographic Data&lt;/h2&gt;
+
+&lt;h3 id=&quot;71-zip-codes&quot;&gt;7.1 ZIP Codes&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Letting zip code as a numeric variable is not a good idea since some models might consider the numeric ordering or distances as something to learn.&lt;/li&gt;
+  &lt;li&gt;Look up demographic variables based on zipcode. For example - With &lt;a href=&quot;http://www.city-data.com/&quot;&gt;City Data&lt;/a&gt; you can look up income distribution, age ranges, etc.&lt;/li&gt;
+  &lt;li&gt;Get latitude and longitude based on zip codes, which can be useful, especially for tree based models&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">How to win a data science competition (Week 1)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="/notes/images/decision_boundaries.png" /><media:content medium="image" url="/notes/images/decision_boundaries.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
