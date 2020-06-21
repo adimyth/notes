@@ -51,7 +51,7 @@ And a numbered list:
 
 ## Code
 
-You can format text and code per usual 
+You can format text and code per usual
 
 General preformatted text:
 
@@ -82,22 +82,16 @@ key: value
 - another_key: "another value"
 ```
 
-
 ## Tables
 
 | Column 1 | Column 2 |
 |-|-|
 | A thing | Another thing |
 
-
 ## Tweetcards
 
-{% twitter https://twitter.com/jakevdp/status/1204765621767901185?s=20 %}
-
+{% twitter <https://twitter.com/jakevdp/status/1204765621767901185?s=20> %}
 
 ## Footnotes
 
-
-
 [^1]: This is the footnote.
-
