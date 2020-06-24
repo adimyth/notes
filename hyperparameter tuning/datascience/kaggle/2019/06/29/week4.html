@@ -147,9 +147,8 @@ window.onload = wrap_img;
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <h1 id="how-to-win-a-data-science-competition-week-4">How to win a data science competition (Week 4)</h1>
+    <h2 id="hyperparameter-tuning">Hyperparameter Tuning</h2>
 
-<h2 id="hyperparameter-tuning">Hyperparameter Tuning</h2>
 <ol>
   <li>Select the most important parameters</li>
   <li>Understand how exactly they influence the training</li>
@@ -165,6 +164,7 @@ window.onload = wrap_img;
 </ul>
 
 <h3 id="hyperopt">HyperOpt</h3>
+
 <ul>
   <li><a href="https://www.kaggle.com/fanvacoolt/tutorial-on-hyperopt">Kaggle HyperOpt Tutorial</a></li>
   <li><a href="https://towardsdatascience.com/a-conceptual-explanation-of-bayesian-model-based-hyperparameter-optimization-for-machine-learning-b8172278050f">Medium Blog</a></li>
@@ -175,6 +175,7 @@ window.onload = wrap_img;
 <p>Bayesian optimisation takes into account past evaluations when choosing the hyperparameter set to evaluate next. By choosing its parameter combinations in an informed way, it enables itself to focus on those areas of the parameter space that it believes will bring the most promising validation scores.</p>
 
 <h4 id="search-space">Search Space</h4>
+
 <p>Bayesian Optimisation operates along probability distributions for each parameter that it will sample from. We specify a probability distribution for the hyperparameters to sample from. One could choose from the following -</p>
 
 <ul>
@@ -185,6 +186,7 @@ window.onload = wrap_img;
 </ul>
 
 <h4 id="objective-function">Objective Function</h4>
+
 <p>The objective function takes in hyperparameters and outputs a single real-valued score that we want to <em>minimize</em> (or maximize). It simply takes in a set of hyperparameters and outputs a score that indicates how well a set of hyperparameters performs on the validation set. For example - RMSE</p>
 
 <p>The entire concept of Bayesian model-based optimization is to <em>reduce the number of times the objective function needs to be run by choosing only the most promising set of hyperparameters</em> to evaluate based on previous calls to the evaluation function.</p>
@@ -194,13 +196,17 @@ window.onload = wrap_img;
 </blockquote>
 
 <h4 id="surrogate-function">Surrogate Function</h4>
+
 <p>Surrogate Function is an approximation of objective function. It is used to propose parameter sets to the objective function that likely yield an improvement. HyperOpt uses something called <em>Tree Parzen Estimator (TPE).</em></p>
 
 <h4 id="selection-function">Selection Function</h4>
+
 <p>The selection function is the criteria by which the next set of hyperparameters are chosen from the surrogate function. The most common choice of criteria is <strong>Expected Improvement</strong>.</p>
 
 <h3 id="xgboost">XGBoost</h3>
+
 <h4 id="increasing-models-capacity">Increasing Model’s Capacity</h4>
+
 <ul>
   <li><code class="highlighter-rouge">max_depth</code> - Increasing this value will make the model more complex and more likely to overfit. Usually start in between [3, 7]. Increase only if there’s an improvement in score.</li>
   <li><code class="highlighter-rouge">subsample</code> - Controls the fraction of objects to use when fitting a true. Ranges between [0-1]. Has some sort of regularisation effect and prone to overfitting.</li>
@@ -210,6 +216,7 @@ window.onload = wrap_img;
 </ul>
 
 <h4 id="decreasing-models-capacity">Decreasing Model’s Capacity</h4>
+
 <ul>
   <li><code class="highlighter-rouge">min_child_weight</code> - The larger <code class="highlighter-rouge">min_child_weight</code> is, the more conservative the algorithm will be. Ranges $[0, _{inf}]$</li>
   <li><code class="highlighter-rouge">gamma</code> - Minimum loss required to make a further split. Larger values results in conservative model. Ranges $[0, _{inf}]$</li>
@@ -220,7 +227,9 @@ window.onload = wrap_img;
 <p>Usually after finding the appropriated values for <code class="highlighter-rouge">num_round</code> and <code class="highlighter-rouge">eta</code>. Divide <code class="highlighter-rouge">eta</code> by <code class="highlighter-rouge">alpha</code> &amp; multiply <code class="highlighter-rouge">num_round</code> by <code class="highlighter-rouge">alpha</code>, this will usually give a slightly better result.</p>
 
 <h3 id="randomforestextratrees">RandomForest/ExtraTrees</h3>
+
 <p>Unlike in Gradient Boosting Trees &amp; it’s variants, RF builds trees <em>parallely</em> &amp; hence increasing the number of trees won’t overfit the model.</p>
+
 <ul>
   <li><code class="highlighter-rouge">n_estimators</code> - Start from small values say 10 &amp; check the time required to fit these 10 trees. If its not too high then use a larger value.</li>
   <li><code class="highlighter-rouge">max_depth</code> - Usually tree depth for RF is greater then GBDTs.</li>
@@ -229,7 +238,9 @@ window.onload = wrap_img;
 </ul>
 
 <h2 id="neural-networks">Neural Networks</h2>
+
 <h3 id="increasing-models-capacity-1">Increasing Model’s Capacity</h3>
+
 <ul>
   <li>Number of neurons per layer</li>
   <li>Number of layers</li>
@@ -238,6 +249,7 @@ window.onload = wrap_img;
 </ul>
 
 <h3 id="decreasing-models-capacity-1">Decreasing Model’s Capacity</h3>
+
 <ul>
   <li>SGD+momentum - Even though it leads to slower learning. The model generalises better.</li>
   <li>Regularization - L2/L1, Dropout/Dropconnect,</li>
@@ -248,36 +260,44 @@ window.onload = wrap_img;
 </blockquote>
 
 <h3 id="cross-validation-strategy">Cross Validation Strategy</h3>
+
 <p>Creating a validation strategy, is to create a validation approach that resembles what you are being tested on. The validation data should be <strong>consistent</strong> with the test data.</p>
 
 <h4 id="time-based">Time Based</h4>
+
 <p>Always have past data predicting the future data. Also the intervals need to be similar with test data. So, if test data is 3 months in the future, the validation data should also be 3 months future compared to the training data.</p>
 
 <h4 id="stratified">Stratified</h4>
+
 <p>Different entities than train?  Suppose the test data has entities which are not present in the training data, then the validation dataset should be created such that there are entities in it which are not present in the train data.</p>
 
 <h3 id="ensembling">Ensembling</h3>
+
 <ol>
   <li>Smaller data requires simpler ensembling techniques like averaging.</li>
   <li>Bigger data works well with Stacking like techniques</li>
 </ol>
 
 <h2 id="statistic-and-distance-based-feature-engineering">Statistic and Distance based feature engineering</h2>
+
 <ul>
   <li>Calculating various statistics of one feature grouped by another</li>
   <li>Features derived from neighbourhood analysis of a given point</li>
 </ul>
 
 <h2 id="matrix-factorizations">Matrix Factorizations</h2>
+
 <p><a href="https://www.coursera.org/learn/competitive-data-science/lecture/8o1Hc/matrix-factorizations">Coursera Matrix Factorization</a></p>
 
 <h3 id="general-notes">General Notes</h3>
+
 <ul>
   <li>MF is a very general approach for dimensionality reduction and feature selection</li>
   <li>It can be applied for transforming categorical features into real-valued features</li>
 </ul>
 
 <h3 id="implementation-notes">Implementation Notes</h3>
+
 <ul>
   <li>Matrix factorisation can be applied to only a subset of columns if desired</li>
   <li>We can use matrix factorisation to get another representation of the same data, especially useful for ensemble models</li>
@@ -286,6 +306,7 @@ window.onload = wrap_img;
 </ul>
 
 <h3 id="nmf-non-negative-matrix-factorisation">NMF (Non-negative Matrix Factorisation)</h3>
+
 <p>It transforms data in a way that makes it more suitable for decision trees. NMF cannot be applied on negative values. “Standardized” means that every feature column has zero mean and unit variance. This implies that we have negative values and cannot apply NMF.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">conctenate</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">])</span>

@@ -151,8 +151,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#how-to-win-a-data-science-competition-week-1">How to win a data science competition (Week 1)</a>
-<ul>
+<li class="toc-entry toc-h2"><a href="#comparison">Comparison</a></li>
 <li class="toc-entry toc-h2"><a href="#1-review">1. Review</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#11-linear-model">1.1 Linear Model</a></li>
@@ -214,10 +213,8 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#71-zip-codes">7.1 ZIP Codes</a></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul><h1 id="how-to-win-a-data-science-competition-week-1">
-<a class="anchor" href="#how-to-win-a-data-science-competition-week-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to win a data science competition (Week 1)</h1>
+</ul><h2 id="comparison">
+<a class="anchor" href="#comparison" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparison</h2>
 
 <p>Real World ML Pipeline</p>
 
@@ -369,9 +366,9 @@ Different feature scaling results in different models quality. On the other hand
 
 <p>Sorts an array and changes their values to indices. Similar to binning.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Example:
-rank([-100, 1, 1e-5]) = [0, 1, 2]
-rank([1000, 1, 10]) = [2, 0, 1]
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Example</span><span class="p">:</span>
+<span class="n">rank</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">])</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">rank</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>Linear Models, KNN and Neural Networks usually benefit from this transformation.</p>
@@ -420,12 +417,12 @@ rank([1000, 1, 10]) = [2, 0, 1]
 </code></pre></div></div>
 
 <ol>
-  <li>Order of Appearance
-    <blockquote>
-      <p>[S, C, Q] -&gt; [1, 2, 3]</p>
-    </blockquote>
-  </li>
+  <li>Order of Appearance</li>
 </ol>
+
+<blockquote>
+  <p>[S, C, Q] -&gt; [1, 2, 3]</p>
+</blockquote>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Pandas</span><span class="o">.</span><span class="n">factorize</span>
 </code></pre></div></div>

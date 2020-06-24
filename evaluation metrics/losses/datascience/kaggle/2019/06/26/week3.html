@@ -151,8 +151,6 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#how-to-win-a-data-science-competition-week-3">How to win a data science competition (Week 3)</a>
-<ul>
 <li class="toc-entry toc-h2"><a href="#regression-metrics">Regression Metrics</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#mean-squared-error-mse">Mean Squared Error (MSE)</a></li>
@@ -229,12 +227,7 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#regression">Regression</a></li>
-</ul>
-</li>
-</ul><h1 id="how-to-win-a-data-science-competition-week-3">
-<a class="anchor" href="#how-to-win-a-data-science-competition-week-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to win a data science competition (Week 3)</h1>
-
-<h2 id="regression-metrics">
+</ul><h2 id="regression-metrics">
 <a class="anchor" href="#regression-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Regression Metrics</h2>
 
 <p><img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fi.stack.imgur.com%2F83BUy.png&amp;f=1" alt="Regression Metrics"></p>
@@ -322,8 +315,8 @@ yhat=10, yact=20, n=1 then MAPE = 100%</p>
 
 <p><code class="highlighter-rouge">RMSLE = RMSE(log(y_true+1), log(y_pred+1))</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.metrics import mean_squared_log_error
-np.sqrt(mean_squared_log_error(y_true, y_pred))
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_log_error</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_log_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
 </code></pre></div></div>
 
 <ul>
@@ -339,19 +332,19 @@ np.sqrt(mean_squared_log_error(y_true, y_pred))
   <li>We don’t want to penalize big differences when both the predicted and the actual are big numbers.</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Acutal=30, Predicted=40, RMSE=10, RMSLE=0.27
-Actual=300, Predicted=400, RMSE=100, RMSLE=0.28
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Acutal</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">Predicted</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">RMSE</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">RMSLE</span><span class="o">=</span><span class="mf">0.27</span>
+<span class="n">Actual</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">Predicted</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">RMSE</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">RMSLE</span><span class="o">=</span><span class="mf">0.28</span>
 </code></pre></div></div>
 
 <ul>
   <li>We want to penalize under estimates more than over estimates</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Actual = 600, Predicted = 1000, RMSLE = 0.51
-Actual = 1000, Predicted = 1400, RMSLE = 0.36
-
-Sales &amp; Inventory products, where having extra supply might be more preferable to not being able to providing product as much as the demand
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Actual</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">Predicted</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">RMSLE</span> <span class="o">=</span> <span class="mf">0.51</span>
+<span class="n">Actual</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">Predicted</span> <span class="o">=</span> <span class="mi">1400</span><span class="p">,</span> <span class="n">RMSLE</span> <span class="o">=</span> <span class="mf">0.36</span>
 </code></pre></div></div>
+
+<p>Sales &amp; Inventory products, where having extra supply might be more preferable to not being able to providing product as much as the demand</p>
 
 <h3 id="poisson-loss">
 <a class="anchor" href="#poisson-loss" aria-hidden="true"><span class="octicon octicon-link"></span></a>Poisson Loss</h3>
@@ -610,8 +603,8 @@ Kappa Score = (0.60 - 0.50) / (1 - 0.50) = 0.20</p>
 
 <p><a href="http://kagglesolutions.com/r/evaluation-metrics--quadratic-weighted-kappa">Quadratic Weighted Kappa</a></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.metrics import cohen_kappa_score, confusion_matrix
-qwk = cohen_kappa_score(actuals, preds, weights="quadratic")
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">cohen_kappa_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="n">qwk</span> <span class="o">=</span> <span class="n">cohen_kappa_score</span><span class="p">(</span><span class="n">actuals</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s">"quadratic"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="target--metric">
@@ -705,33 +698,33 @@ qwk = cohen_kappa_score(actuals, preds, weights="quadratic")
 <h3 id="f1-score-1">
 <a class="anchor" href="#f1-score-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>F1-Score</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def f1_metric(y_true, y_pred):
-    y_pred = K.round(y_pred)
-    tp = K.sum(K.cast(y_true*y_pred, 'float'), axis=0)
-    tn = K.sum(K.cast((1-y_true)*(1-y_pred), 'float'), axis=0)
-    fp = K.sum(K.cast((1-y_true)*y_pred, 'float'), axis=0)
-    fn = K.sum(K.cast(y_true*(1-y_pred), 'float'), axis=0)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">f1_metric</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="nb">round</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">tp</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">y_true</span><span class="o">*</span><span class="n">y_pred</span><span class="p">,</span> <span class="s">'float'</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">tn</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">cast</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">y_true</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y_pred</span><span class="p">),</span> <span class="s">'float'</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">cast</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">y_true</span><span class="p">)</span><span class="o">*</span><span class="n">y_pred</span><span class="p">,</span> <span class="s">'float'</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">y_true</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y_pred</span><span class="p">),</span> <span class="s">'float'</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-    p = tp / (tp + fp + K.epsilon())
-    r = tp / (tp + fn + K.epsilon())
+    <span class="n">p</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span> <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">epsilon</span><span class="p">())</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">epsilon</span><span class="p">())</span>
 
-    f1 = 2*p*r / (p+r+K.epsilon())
-    f1 = tf.where(tf.is_nan(f1), tf.zeros_like(f1), f1)
-    return K.mean(f1)
+    <span class="n">f1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="n">r</span><span class="o">+</span><span class="n">K</span><span class="o">.</span><span class="n">epsilon</span><span class="p">())</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">is_nan</span><span class="p">(</span><span class="n">f1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">f1</span><span class="p">),</span> <span class="n">f1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">K</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
 
-def f1_loss(y_true, y_pred):
+<span class="k">def</span> <span class="nf">f1_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
 
-    tp = K.sum(K.cast(y_true*y_pred, 'float'), axis=0)
-    tn = K.sum(K.cast((1-y_true)*(1-y_pred), 'float'), axis=0)
-    fp = K.sum(K.cast((1-y_true)*y_pred, 'float'), axis=0)
-    fn = K.sum(K.cast(y_true*(1-y_pred), 'float'), axis=0)
+    <span class="n">tp</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">y_true</span><span class="o">*</span><span class="n">y_pred</span><span class="p">,</span> <span class="s">'float'</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">tn</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">cast</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">y_true</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y_pred</span><span class="p">),</span> <span class="s">'float'</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">cast</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">y_true</span><span class="p">)</span><span class="o">*</span><span class="n">y_pred</span><span class="p">,</span> <span class="s">'float'</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">y_true</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">y_pred</span><span class="p">),</span> <span class="s">'float'</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-    p = tp / (tp + fp + K.epsilon())
-    r = tp / (tp + fn + K.epsilon())
+    <span class="n">p</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fp</span> <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">epsilon</span><span class="p">())</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">tp</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp</span> <span class="o">+</span> <span class="n">fn</span> <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">epsilon</span><span class="p">())</span>
 
-    f1 = 2*p*r / (p+r+K.epsilon())
-    f1 = tf.where(tf.is_nan(f1), tf.zeros_like(f1), f1)
-    return 1 - K.mean(f1)
+    <span class="n">f1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="n">r</span><span class="o">+</span><span class="n">K</span><span class="o">.</span><span class="n">epsilon</span><span class="p">())</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">is_nan</span><span class="p">(</span><span class="n">f1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">f1</span><span class="p">),</span> <span class="n">f1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">K</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="mean-encoding">
