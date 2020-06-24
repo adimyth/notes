@@ -147,56 +147,9 @@ window.onload = wrap_img;
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#how-to-win-a-data-science-competition-week-4">How to win a data science competition (Week 4)</a>
-<ul>
-<li class="toc-entry toc-h2"><a href="#hyperparameter-tuning">Hyperparameter Tuning</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#hyperopt">HyperOpt</a>
-<ul>
-<li class="toc-entry toc-h4"><a href="#search-space">SEARCH SPACE</a></li>
-<li class="toc-entry toc-h4"><a href="#objective-function">OBJECTIVE FUNCTION</a></li>
-<li class="toc-entry toc-h4"><a href="#surrogate-function">SURROGATE FUNCTION</a></li>
-<li class="toc-entry toc-h4"><a href="#selection-function">SELECTION FUNCTION</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h3"><a href="#xgboost">XGBoost</a>
-<ul>
-<li class="toc-entry toc-h4"><a href="#increasing-models-capacity">INCREASING MODEL’S CAPACITY</a></li>
-<li class="toc-entry toc-h4"><a href="#decreasing-models-capacity">DECREASING MODEL’s CAPACITY</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h3"><a href="#randomforestextratrees">RandomForest/ExtraTrees</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h2"><a href="#neural-networks">Neural Networks</a>
-<ul>
-<li class="toc-entry toc-h4"><a href="#increasing-models-capacity-1">INCREASING MODEL’S CAPACITY</a></li>
-<li class="toc-entry toc-h4"><a href="#decreasing-models-capacity-1">DECREASING MODEL’S CAPACITY</a></li>
-<li class="toc-entry toc-h3"><a href="#cross-validation-strategy">Cross Validation Strategy</a>
-<ul>
-<li class="toc-entry toc-h4"><a href="#time-based">TIME BASED</a></li>
-<li class="toc-entry toc-h4"><a href="#stratified">STRATIFIED</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h3"><a href="#ensembling">Ensembling</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h2"><a href="#statistic-and-distance-based-feature-engineering">Statistic and Distance based feature engineering</a></li>
-<li class="toc-entry toc-h2"><a href="#matrix-factorizations">Matrix Factorizations</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#general-notes">General Notes</a></li>
-<li class="toc-entry toc-h3"><a href="#implementation-notes">Implementation Notes</a></li>
-<li class="toc-entry toc-h3"><a href="#nmf-non-negative-matrix-factorisation">NMF (Non-negative Matrix Factorisation)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul><h1 id="how-to-win-a-data-science-competition-week-4">
-<a class="anchor" href="#how-to-win-a-data-science-competition-week-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to win a data science competition (Week 4)</h1>
+    <h1 id="how-to-win-a-data-science-competition-week-4">How to win a data science competition (Week 4)</h1>
 
-<h2 id="hyperparameter-tuning">
-<a class="anchor" href="#hyperparameter-tuning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hyperparameter Tuning</h2>
+<h2 id="hyperparameter-tuning">Hyperparameter Tuning</h2>
 <ol>
   <li>Select the most important parameters</li>
   <li>Understand how exactly they influence the training</li>
@@ -211,19 +164,9 @@ window.onload = wrap_img;
   <li>RoBo</li>
 </ul>
 
-<h3 id="hyperopt">
-<a class="anchor" href="#hyperopt" aria-hidden="true"><span class="octicon octicon-link"></span></a>HyperOpt</h3>
+<h3 id="hyperopt">HyperOpt</h3>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>[HyperOpt Tutorial</td>
-          <td>Kaggle](https://www.kaggle.com/fanvacoolt/tutorial-on-hyperopt)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><a href="https://www.kaggle.com/fanvacoolt/tutorial-on-hyperopt">Kaggle HyperOpt Tutorial</a></li>
   <li><a href="https://towardsdatascience.com/a-conceptual-explanation-of-bayesian-model-based-hyperparameter-optimization-for-machine-learning-b8172278050f">Medium Blog</a></li>
   <li><a href="https://medium.com/vantageai/bringing-back-the-time-spent-on-hyperparameter-tuning-with-bayesian-optimisation-2e21a3198afb">Working Example</a></li>
   <li><a href="https://districtdatalabs.silvrback.com/parameter-tuning-with-hyperopt">All Classifiers Example</a></li>
@@ -231,8 +174,7 @@ window.onload = wrap_img;
 
 <p>Bayesian optimisation takes into account past evaluations when choosing the hyperparameter set to evaluate next. By choosing its parameter combinations in an informed way, it enables itself to focus on those areas of the parameter space that it believes will bring the most promising validation scores.</p>
 
-<h4 id="search-space">
-<a class="anchor" href="#search-space" aria-hidden="true"><span class="octicon octicon-link"></span></a>SEARCH SPACE</h4>
+<h4 id="search-space">Search Space</h4>
 <p>Bayesian Optimisation operates along probability distributions for each parameter that it will sample from. We specify a probability distribution for the hyperparameters to sample from. One could choose from the following -</p>
 
 <ul>
@@ -242,70 +184,52 @@ window.onload = wrap_img;
   <li><code class="highlighter-rouge">hp.lognormal</code></li>
 </ul>
 
-<h4 id="objective-function">
-<a class="anchor" href="#objective-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>OBJECTIVE FUNCTION</h4>
+<h4 id="objective-function">Objective Function</h4>
 <p>The objective function takes in hyperparameters and outputs a single real-valued score that we want to <em>minimize</em> (or maximize). It simply takes in a set of hyperparameters and outputs a score that indicates how well a set of hyperparameters performs on the validation set. For example - RMSE</p>
 
 <p>The entire concept of Bayesian model-based optimization is to <em>reduce the number of times the objective function needs to be run by choosing only the most promising set of hyperparameters</em> to evaluate based on previous calls to the evaluation function.</p>
 
 <blockquote>
-  <p>Note Objective Function is usually the loss function. By default <code class="highlighter-rouge">hyperopt</code> tries to minimize the objective function.</p>
+  <p>Objective Function is usually the loss function. By default <code class="highlighter-rouge">hyperopt</code> tries to minimize the objective function.</p>
 </blockquote>
 
-<h4 id="surrogate-function">
-<a class="anchor" href="#surrogate-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>SURROGATE FUNCTION</h4>
+<h4 id="surrogate-function">Surrogate Function</h4>
 <p>Surrogate Function is an approximation of objective function. It is used to propose parameter sets to the objective function that likely yield an improvement. HyperOpt uses something called <em>Tree Parzen Estimator (TPE).</em></p>
 
-<h4 id="selection-function">
-<a class="anchor" href="#selection-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>SELECTION FUNCTION</h4>
+<h4 id="selection-function">Selection Function</h4>
 <p>The selection function is the criteria by which the next set of hyperparameters are chosen from the surrogate function. The most common choice of criteria is <strong>Expected Improvement</strong>.</p>
 
-<h3 id="xgboost">
-<a class="anchor" href="#xgboost" aria-hidden="true"><span class="octicon octicon-link"></span></a>XGBoost</h3>
-<h4 id="increasing-models-capacity">
-<a class="anchor" href="#increasing-models-capacity" aria-hidden="true"><span class="octicon octicon-link"></span></a>INCREASING MODEL’S CAPACITY</h4>
+<h3 id="xgboost">XGBoost</h3>
+<h4 id="increasing-models-capacity">Increasing Model’s Capacity</h4>
 <ul>
-  <li>
-<code class="highlighter-rouge">max_depth</code> - Increasing this value will make the model more complex and more likely to overfit. Usually start in between [3, 7]. Increase only if there’s an improvement in score.</li>
-  <li>
-<code class="highlighter-rouge">subsample</code> - Controls the fraction of objects to use when fitting a true. Ranges between [0-1]. Has some sort of regularisation effect and prone to overfitting.</li>
-  <li>
-<code class="highlighter-rouge">colsample_bytree</code> - Controls the fraction of features to consider at every split. [0-1]</li>
-  <li>
-<code class="highlighter-rouge">eta</code> - Learning rate</li>
-  <li>
-<code class="highlighter-rouge">num_round</code> - Number of trees to build.</li>
+  <li><code class="highlighter-rouge">max_depth</code> - Increasing this value will make the model more complex and more likely to overfit. Usually start in between [3, 7]. Increase only if there’s an improvement in score.</li>
+  <li><code class="highlighter-rouge">subsample</code> - Controls the fraction of objects to use when fitting a true. Ranges between [0-1]. Has some sort of regularisation effect and prone to overfitting.</li>
+  <li><code class="highlighter-rouge">colsample_bytree</code> - Controls the fraction of features to consider at every split. [0-1]</li>
+  <li><code class="highlighter-rouge">eta</code> - Learning rate</li>
+  <li><code class="highlighter-rouge">num_round</code> - Number of trees to build.</li>
 </ul>
 
-<h4 id="decreasing-models-capacity">
-<a class="anchor" href="#decreasing-models-capacity" aria-hidden="true"><span class="octicon octicon-link"></span></a>DECREASING MODEL’s CAPACITY</h4>
+<h4 id="decreasing-models-capacity">Decreasing Model’s Capacity</h4>
 <ul>
-  <li>
-<code class="highlighter-rouge">min_child_weight</code> - The larger <code class="highlighter-rouge">min_child_weight</code> is, the more conservative the algorithm will be. Ranges $[0, _{inf}]$</li>
-  <li>
-<code class="highlighter-rouge">gamma</code> - Minimum loss required to make a further split. Larger values results in conservative model. Ranges $[0, _{inf}]$</li>
-  <li>
-<code class="highlighter-rouge">lambda</code> - L2 regularization.</li>
-  <li>
-<code class="highlighter-rouge">alpha</code> - L1 regularization</li>
+  <li><code class="highlighter-rouge">min_child_weight</code> - The larger <code class="highlighter-rouge">min_child_weight</code> is, the more conservative the algorithm will be. Ranges $[0, _{inf}]$</li>
+  <li><code class="highlighter-rouge">gamma</code> - Minimum loss required to make a further split. Larger values results in conservative model. Ranges $[0, _{inf}]$</li>
+  <li><code class="highlighter-rouge">lambda</code> - L2 regularization.</li>
+  <li><code class="highlighter-rouge">alpha</code> - L1 regularization</li>
 </ul>
 
 <p>Usually after finding the appropriated values for <code class="highlighter-rouge">num_round</code> and <code class="highlighter-rouge">eta</code>. Divide <code class="highlighter-rouge">eta</code> by <code class="highlighter-rouge">alpha</code> &amp; multiply <code class="highlighter-rouge">num_round</code> by <code class="highlighter-rouge">alpha</code>, this will usually give a slightly better result.</p>
 
-<h3 id="randomforestextratrees">
-<a class="anchor" href="#randomforestextratrees" aria-hidden="true"><span class="octicon octicon-link"></span></a>RandomForest/ExtraTrees</h3>
+<h3 id="randomforestextratrees">RandomForest/ExtraTrees</h3>
 <p>Unlike in Gradient Boosting Trees &amp; it’s variants, RF builds trees <em>parallely</em> &amp; hence increasing the number of trees won’t overfit the model.</p>
 <ul>
-  <li>n_estimators - Start from small values say 10 &amp; check the time required to fit these 10 trees. If its not too high then use a larger value.</li>
-  <li>max_depth - Usually tree depth for RF is greater then GBDTs.</li>
-  <li>max_features</li>
-  <li>min_samples_leaf</li>
+  <li><code class="highlighter-rouge">n_estimators</code> - Start from small values say 10 &amp; check the time required to fit these 10 trees. If its not too high then use a larger value.</li>
+  <li><code class="highlighter-rouge">max_depth</code> - Usually tree depth for RF is greater then GBDTs.</li>
+  <li><code class="highlighter-rouge">max_features</code></li>
+  <li><code class="highlighter-rouge">min_samples_leaf</code></li>
 </ul>
 
-<h2 id="neural-networks">
-<a class="anchor" href="#neural-networks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Neural Networks</h2>
-<h4 id="increasing-models-capacity-1">
-<a class="anchor" href="#increasing-models-capacity-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>INCREASING MODEL’S CAPACITY</h4>
+<h2 id="neural-networks">Neural Networks</h2>
+<h3 id="increasing-models-capacity-1">Increasing Model’s Capacity</h3>
 <ul>
   <li>Number of neurons per layer</li>
   <li>Number of layers</li>
@@ -313,8 +237,7 @@ window.onload = wrap_img;
   <li>Batch Size - Larger batch size causes overfitting</li>
 </ul>
 
-<h4 id="decreasing-models-capacity-1">
-<a class="anchor" href="#decreasing-models-capacity-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>DECREASING MODEL’S CAPACITY</h4>
+<h3 id="decreasing-models-capacity-1">Decreasing Model’s Capacity</h3>
 <ul>
   <li>SGD+momentum - Even though it leads to slower learning. The model generalises better.</li>
   <li>Regularization - L2/L1, Dropout/Dropconnect,</li>
@@ -324,55 +247,45 @@ window.onload = wrap_img;
   <p>Some people follow the rule - If you increase your batch size by a factor of <code class="highlighter-rouge">alpha</code>, increase your learning rate by the same factor as well.</p>
 </blockquote>
 
-<h3 id="cross-validation-strategy">
-<a class="anchor" href="#cross-validation-strategy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cross Validation Strategy</h3>
+<h3 id="cross-validation-strategy">Cross Validation Strategy</h3>
 <p>Creating a validation strategy, is to create a validation approach that resembles what you are being tested on. The validation data should be <strong>consistent</strong> with the test data.</p>
 
-<h4 id="time-based">
-<a class="anchor" href="#time-based" aria-hidden="true"><span class="octicon octicon-link"></span></a>TIME BASED</h4>
+<h4 id="time-based">Time Based</h4>
 <p>Always have past data predicting the future data. Also the intervals need to be similar with test data. So, if test data is 3 months in the future, the validation data should also be 3 months future compared to the training data.</p>
 
-<h4 id="stratified">
-<a class="anchor" href="#stratified" aria-hidden="true"><span class="octicon octicon-link"></span></a>STRATIFIED</h4>
+<h4 id="stratified">Stratified</h4>
 <p>Different entities than train?  Suppose the test data has entities which are not present in the training data, then the validation dataset should be created such that there are entities in it which are not present in the train data.</p>
 
-<h3 id="ensembling">
-<a class="anchor" href="#ensembling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ensembling</h3>
+<h3 id="ensembling">Ensembling</h3>
 <ol>
   <li>Smaller data requires simpler ensembling techniques like averaging.</li>
   <li>Bigger data works well with Stacking like techniques</li>
 </ol>
 
-<h2 id="statistic-and-distance-based-feature-engineering">
-<a class="anchor" href="#statistic-and-distance-based-feature-engineering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Statistic and Distance based feature engineering</h2>
+<h2 id="statistic-and-distance-based-feature-engineering">Statistic and Distance based feature engineering</h2>
 <ul>
   <li>Calculating various statistics of one feature grouped by another</li>
   <li>Features derived from neighbourhood analysis of a given point</li>
 </ul>
 
-<h2 id="matrix-factorizations">
-<a class="anchor" href="#matrix-factorizations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Matrix Factorizations</h2>
+<h2 id="matrix-factorizations">Matrix Factorizations</h2>
 <p><a href="https://www.coursera.org/learn/competitive-data-science/lecture/8o1Hc/matrix-factorizations">Coursera Matrix Factorization</a></p>
 
-<h3 id="general-notes">
-<a class="anchor" href="#general-notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>General Notes</h3>
+<h3 id="general-notes">General Notes</h3>
 <ul>
   <li>MF is a very general approach for dimensionality reduction and feature selection</li>
   <li>It can be applied for transforming categorical features into real-valued features</li>
 </ul>
 
-<h3 id="implementation-notes">
-<a class="anchor" href="#implementation-notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation Notes</h3>
+<h3 id="implementation-notes">Implementation Notes</h3>
 <ul>
   <li>Matrix factorisation can be applied to only a subset of columns if desired</li>
   <li>We can use matrix factorisation to get another representation of the same data, especially useful for ensemble models</li>
   <li>Loss of information</li>
-  <li>The number of latent factors to use <strong>must be treated as a hyperparamater &amp; must be tuned.</strong>
-</li>
+  <li>The number of latent factors to use <strong>must be treated as a hyperparamater &amp; must be tuned.</strong></li>
 </ul>
 
-<h3 id="nmf-non-negative-matrix-factorisation">
-<a class="anchor" href="#nmf-non-negative-matrix-factorisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>NMF (Non-negative Matrix Factorisation)</h3>
+<h3 id="nmf-non-negative-matrix-factorisation">NMF (Non-negative Matrix Factorisation)</h3>
 <p>It transforms data in a way that makes it more suitable for decision trees. NMF cannot be applied on negative values. “Standardized” means that every feature column has zero mean and unit variance. This implies that we have negative values and cannot apply NMF.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">conctenate</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">])</span>
@@ -408,9 +321,13 @@ window.onload = wrap_img;
             </svg><span>Subscribe</span>
           </a>
         </p>
+        <ul class="contact-list">
+          <li class="p-name">Aditya Mishra</li>
+          <li><a class="u-email" href="mailto:mishraaditya6991@gmail.com">mishraaditya6991@gmail.com</a></li>
+        </ul>
       </div>
       <div class="footer-col">
-        <p>Notes from different MOOCs.</p>
+        <p>Documenting all my learning notes here. Contains notes from different MOOCs, Blogs &amp; Other YouTube Videos.</p>
       </div>
     </div>
 
