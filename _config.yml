@@ -9,6 +9,7 @@
 title: Notes 
 description: Notes from different MOOCs.
 github_username: adimyth
+email: mishraaditya6991@gmail.com
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "notes"
 
@@ -38,9 +39,11 @@ baseurl: "/notes" # the subpath of your site, e.g. "/blog".
 
 # Github and twitter are optional:
 minima:
+  skin: dark
   social_links:
     twitter: adi_myth
     github: adimyth
+    medium: adi_myth
 
 # Set this to true to get LaTeX math equation support
 use_math: True
@@ -94,7 +97,7 @@ plugins:
 
 # See https://jekyllrb.com/docs/pagination/
 # For pagination to work, you cannot have index.md at the root of your repo, instead you must rename this file to index.html
-paginate: 5
+paginate: 10
 paginate_path: /page:num/
 
 remote_theme: jekyll/minima
