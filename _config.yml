@@ -9,7 +9,6 @@
 title: Notes 
 description: Notes from different MOOCs.
 github_username: adimyth
-email: mishraaditya6991@gmail.com
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "notes"
 
@@ -39,11 +38,9 @@ baseurl: "/notes" # the subpath of your site, e.g. "/blog".
 
 # Github and twitter are optional:
 minima:
-  skin: dark
   social_links:
     twitter: adi_myth
     github: adimyth
-    medium: adi_myth
 
 # Set this to true to get LaTeX math equation support
 use_math: True
