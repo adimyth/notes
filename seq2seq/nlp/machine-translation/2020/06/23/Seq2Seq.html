@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence." />
 <meta property="og:description" content="Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence." />
-<link rel="canonical" href="/notes/seq2seq/nlp/machine-translation/2020/06/21/Seq2Seq.html" />
-<meta property="og:url" content="/notes/seq2seq/nlp/machine-translation/2020/06/21/Seq2Seq.html" />
+<link rel="canonical" href="/notes/seq2seq/nlp/machine-translation/2020/06/23/Seq2Seq.html" />
+<meta property="og:url" content="/notes/seq2seq/nlp/machine-translation/2020/06/23/Seq2Seq.html" />
 <meta property="og:site_name" content="Notes" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-06-21T00:00:00-05:00" />
+<meta property="article:published_time" content="2020-06-23T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Aditya Mishra"},"description":"Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence.","@type":"BlogPosting","headline":"Word Level Seq2Seq Model","dateModified":"2020-06-21T00:00:00-05:00","datePublished":"2020-06-21T00:00:00-05:00","url":"/notes/seq2seq/nlp/machine-translation/2020/06/21/Seq2Seq.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/seq2seq/nlp/machine-translation/2020/06/21/Seq2Seq.html"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Aditya Mishra"},"description":"Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence.","@type":"BlogPosting","headline":"Word Level Seq2Seq Model","dateModified":"2020-06-23T00:00:00-05:00","datePublished":"2020-06-23T00:00:00-05:00","url":"/notes/seq2seq/nlp/machine-translation/2020/06/23/Seq2Seq.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/seq2seq/nlp/machine-translation/2020/06/23/Seq2Seq.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/notes/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/notes/feed.xml" title="Notes" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -32,13 +32,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence." />
 <meta property="og:description" content="Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence." />
-<link rel="canonical" href="/notes/seq2seq/nlp/machine-translation/2020/06/21/Seq2Seq.html" />
-<meta property="og:url" content="/notes/seq2seq/nlp/machine-translation/2020/06/21/Seq2Seq.html" />
+<link rel="canonical" href="/notes/seq2seq/nlp/machine-translation/2020/06/23/Seq2Seq.html" />
+<meta property="og:url" content="/notes/seq2seq/nlp/machine-translation/2020/06/23/Seq2Seq.html" />
 <meta property="og:site_name" content="Notes" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-06-21T00:00:00-05:00" />
+<meta property="article:published_time" content="2020-06-23T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Aditya Mishra"},"description":"Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence.","@type":"BlogPosting","headline":"Word Level Seq2Seq Model","dateModified":"2020-06-21T00:00:00-05:00","datePublished":"2020-06-21T00:00:00-05:00","url":"/notes/seq2seq/nlp/machine-translation/2020/06/21/Seq2Seq.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/seq2seq/nlp/machine-translation/2020/06/21/Seq2Seq.html"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Aditya Mishra"},"description":"Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence.","@type":"BlogPosting","headline":"Word Level Seq2Seq Model","dateModified":"2020-06-23T00:00:00-05:00","datePublished":"2020-06-23T00:00:00-05:00","url":"/notes/seq2seq/nlp/machine-translation/2020/06/23/Seq2Seq.html","mainEntityOfPage":{"@type":"WebPage","@id":"/notes/seq2seq/nlp/machine-translation/2020/06/23/Seq2Seq.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -115,8 +115,8 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Word Level Seq2Seq Model</h1><p class="page-description">Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-21T00:00:00-05:00" itemprop="datePublished">
-        Jun 21, 2020
+    <h1 class="post-title p-name" itemprop="name headline">Word Level Seq2Seq Model</h1><p class="page-description">Seq2Seq is an encoder-decoder network that maps an input sequence to an output sequence. The idea is to pass the summarized sentence as a hidden vector to the decoder and trying to predict the next state sequence from the previous sequence.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-06-23T00:00:00-05:00" itemprop="datePublished">
+        Jun 23, 2020
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
             <span class="p-author h-card" itemprop="name">Aditya Mishra</span></span>
@@ -409,7 +409,7 @@ Archive:  spa-eng.zip
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
 <div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <svg class="octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
     <strong>Note: </strong>Disabling eager execution because all zeros mask raises some CuDNN kernel level issue. Refer <a href="https://github.com/tensorflow/tensorflow/issues/33148">here</a>
 </div>
 
@@ -2237,7 +2237,8 @@ WARNING:tensorflow:Layer lstm_1 will not use cuDNN kernel since it doesn't meet 
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Beam-Search-Decoding">
 <a class="anchor" href="#Beam-Search-Decoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Beam Search Decoding<a class="anchor-link" href="#Beam-Search-Decoding"> </a>
@@ -2251,21 +2252,21 @@ $$score(y_{1}, y_{2}, y_{3}, ..., y_{t})=\log P(y_{1}, y_{2}, y_{3}, ..., y_{t}|
 <li>Scores are all negative, as we are taking log of probabilities (0-1)</li>
 <li>We search for high scoring hypothesis, <strong><em>keeping track of top k only</em></strong> at each step</li>
 </ul>
-<p><strong>STOPPING CRITERIA</strong>
-Since, different hypothesis may produce <em><end>&lt;/em&gt; token at different timesteps. Therefore,&lt;/p&gt;
+<p><strong>STOPPING CRITERIA</strong></p>
+<p>Since, different hypothesis may produce $&lt;END&gt;$ token at different timesteps. Therefore,</p>
 <ol>
-<li>Once a hypothesis produces <em><end>&lt;/em&gt; token, we regard it complete.&lt;/li&gt;
-<li>We then discard it &amp; continue exploring other hypothesis.</li>
-&lt;/ol&gt;
+<li>Once a hypothesis produces $&lt;END&gt;$ token, we regard it complete.</li>
+<li>We then discard it and continue exploring other hypothesis.</li>
+</ol>
 <p>We usually stop when,</p>
 <ol>
 <li>We have say <em>n</em> words or sequence is say of length 50 or 100, etc.</li>
 <li>We have certain number of completed hypothesis.</li>
 </ol>
 
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -2483,15 +2484,11 @@ Since, different hypothesis may produce <em><end>&lt;/em&gt; token at different 
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-hide</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
     <span class="n">k</span><span class="o">+=</span><span class="mi">1</span>
     <span class="p">(</span><span class="n">input_seq</span><span class="p">,</span> <span class="n">actual_output</span><span class="p">),</span> <span class="n">_</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">train_gen</span><span class="p">)</span>
     <span class="n">decoded_sentence</span> <span class="o">=</span> <span class="n">decode_sequence</span><span class="p">(</span><span class="n">input_seq</span><span class="p">)</span>
@@ -2507,7 +2504,6 @@ Since, different hypothesis may produce <em><end>&lt;/em&gt; token at different 
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -2647,15 +2643,11 @@ Predicted Translation (English): What time do you get up in australia
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-hide</span>
-<span class="n">train_gen</span> <span class="o">=</span> <span class="n">generate_batch</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_gen</span> <span class="o">=</span> <span class="n">generate_batch</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">k</span><span class="o">=-</span><span class="mi">1</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
     <span class="n">k</span><span class="o">+=</span><span class="mi">1</span>
@@ -2684,7 +2676,6 @@ Predicted Translation (English): What time do you get up in australia
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -3188,15 +3179,8 @@ Predicted Translation (English): I think you are the only one to decide
 </div>
     
 
-&lt;/div&gt;
- 
+</div>
 
-</end></em>
-</li>
-</ol></end></em></p>
-</div>
-</div></div>
-</div>
 
 
   </div><!-- from https://github.com/utterance/utterances -->
@@ -3207,7 +3191,7 @@ Predicted Translation (English): I think you are the only one to decide
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/notes/seq2seq/nlp/machine-translation/2020/06/21/Seq2Seq.html" hidden></a>
+</script><a class="u-url" href="/notes/seq2seq/nlp/machine-translation/2020/06/23/Seq2Seq.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
