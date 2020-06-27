@@ -162,7 +162,11 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#2-preprocessing">2. Preprocessing</a></li>
 <li class="toc-entry toc-h2"><a href="#21-numeric-features">2.1 Numeric Features</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#211-scaling">2.1.1 Scaling</a></li>
+<li class="toc-entry toc-h3"><a href="#211-scaling">2.1.1 Scaling</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#minmax-scaler">MinMax Scaler</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h3"><a href="#212-winsorization">2.1.2 Winsorization</a></li>
 <li class="toc-entry toc-h3"><a href="#213-rank-transformation">2.1.3 Rank Transformation</a></li>
 <li class="toc-entry toc-h3"><a href="#214-log-transformation">2.1.4 Log Transformation</a></li>
@@ -261,8 +265,9 @@ window.onload = wrap_img;
 <a class="anchor" href="#11-linear-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.1 Linear Model</h3>
 
 <p>Especially good for sparse high dimensional data.
-Support Vector Machine (SVM) is a linear model with special loss function. Even with “kernel trick”, it’s still linear in new, extended space.
-Libraries: Scikit-learn and Vowpal Wabbit</p>
+Support Vector Machine (SVM) is a linear model with special loss function. Even with “kernel trick”, it’s still linear in new, extended space.</p>
+
+<p><strong>Libraries</strong>: Scikit-learn and Vowpal Wabbit</p>
 
 <h3 id="12-tree-based-model">
 <a class="anchor" href="#12-tree-based-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.2 Tree Based Model</h3>
@@ -275,7 +280,7 @@ Libraries: Scikit-learn and Vowpal Wabbit</p>
 
 <p>ExtraTrees classifier always tests random splits over fraction of features (in contrast to RandomForest, which tests all possible splits over fraction of features)</p>
 
-<p>Libraries: Scikit-learn, XGBoost, LightGBM</p>
+<p><strong>Libraries</strong>: Scikit-learn, XGBoost, LightGBM</p>
 
 <h3 id="13-no-free-lunch-theorem">
 <a class="anchor" href="#13-no-free-lunch-theorem" aria-hidden="true"><span class="octicon octicon-link"></span></a>1.3 No Free Lunch Theorem</h3>
@@ -334,13 +339,12 @@ Different feature scaling results in different models quality. On the other hand
   </li>
 </ul>
 
-<ol>
-  <li>MinMax Scaler - The distribution of the feature before and after scaling remains the same. The value range is 0 to 1.</li>
-</ol>
+<h4 id="minmax-scaler">
+<a class="anchor" href="#minmax-scaler" aria-hidden="true"><span class="octicon octicon-link"></span></a>MinMax Scaler</h4>
 
-<blockquote>
-  <p>X = (X — X.min) / (X.max — X.min)</p>
-</blockquote>
+<p>MinMax Scaler - The distribution of the feature before and after scaling remains the same. The value range is 0 to 1.</p>
+
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mfrac><mrow><mi>X</mi><mtext>—</mtext><mi>X</mi><mi mathvariant="normal">.</mi><mi>m</mi><mi>i</mi><mi>n</mi></mrow><mrow><mi>X</mi><mi mathvariant="normal">.</mi><mi>m</mi><mi>a</mi><mi>x</mi><mtext>—</mtext><mi>X</mi><mi mathvariant="normal">.</mi><mi>m</mi><mi>i</mi><mi>n</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">X = \frac{X — X.min}{X.max — X.min}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">.</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mord">—</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">.</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">—</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">.</span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span>
 </code></pre></div></div>
@@ -349,9 +353,7 @@ Different feature scaling results in different models quality. On the other hand
   <li>Standard Scaler - We always get a standard normal distribution.</li>
 </ol>
 
-<blockquote>
-  <p>X = (X — X.mean) / X.std</p>
-</blockquote>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mfrac><mrow><mi>X</mi><mtext>—</mtext><mi>X</mi><mi mathvariant="normal">.</mi><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi></mrow><mrow><mi>X</mi><mi mathvariant="normal">.</mi><mi>s</mi><mi>t</mi><mi>d</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">X = \frac{X — X.mean}{X.std}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">.</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">d</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">—</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord">.</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">StandardScaler</span>
 </code></pre></div></div>
@@ -431,7 +433,7 @@ Different feature scaling results in different models quality. On the other hand
 <a class="anchor" href="#222-frequency-encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.2 Frequency Encoding</h3>
 
 <p>Encode categories on the frequency of their occurrence. Preserves information about value distribution.
-Example:  For a given list [S, C, Q, S, S, C, Q, S, C, S] the feature column can be encoded by replacing [S, C, Q] -&gt; [0.5, 0.3, 0.2]</p>
+Example:  For a given list <code class="highlighter-rouge">[S, C, Q, S, S, C, Q, S, C, S]</code> the feature column can be encoded by replacing <code class="highlighter-rouge">[S, C, Q] -&gt; [0.5, 0.3, 0.2]</code></p>
 
 <p>Can be useful for both tree based &amp; non-tree based models.</p>
 
@@ -456,8 +458,10 @@ Example:  For a given list [S, C, Q, S, S, C, Q, S, C, S] the feature column can
 <p>It is useful to apply target encoding when the number of samples of each category type belonging to the target value equal to say 1 is reasonable i.e if <code class="highlighter-rouge">y</code> has values only 0 and 1 &amp; say for the category <code class="highlighter-rouge">a</code> belonging to <code class="highlighter-rouge">x_0</code> doesn’t have any target value as 1, then it’s mean will be 0.</p>
 
 <blockquote>
-  <p>For continous target value, feature is replaced by average target value. Example - if <em>profession=teacher</em> is the categorical feature &amp; <em>salary</em> is target, then <em>teacher</em> is replaced by <em>average salary of teachers</em> in the training set</p>
+  <p>For continous target value, feature is replaced by average target value.</p>
 </blockquote>
+
+<p><strong>Example</strong> - If <em>profession=teacher</em> is the categorical feature &amp; <em>salary</em> is target, then <em>teacher</em> is replaced by <em>average salary of teachers</em> in the training set</p>
 
 <h3 id="225-binary-encoding">
 <a class="anchor" href="#225-binary-encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2.5 Binary Encoding</h3>
@@ -502,7 +506,7 @@ Example:  For a given list [S, C, Q, S, S, C, Q, S, C, S] the feature column can
 <h3 id="33-difference-between-dates">
 <a class="anchor" href="#33-difference-between-dates" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.3 Difference between Dates</h3>
 
-<p>Number of days between two events. Example - Subtracting $end_date - start_date$  gives number of years loan amount was paid.</p>
+<p>Number of days between two events. Example - Subtracting <em>end_date - start_date</em>  gives number of years loan amount was paid.</p>
 
 <h2 id="4-coordinates">
 <a class="anchor" href="#4-coordinates" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Coordinates</h2>
@@ -523,7 +527,7 @@ Example:  For a given list [S, C, Q, S, S, C, Q, S, C, S] the feature column can
 <a class="anchor" href="#5-missing-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Missing Values</h2>
 
 <ul>
-  <li>Missing values can be represented in any way not necessarily as NaN. Some examples are $-1, 999, , empty string, NaN$, etc.</li>
+  <li>Missing values can be represented in any way not necessarily as NaN. Some examples are <em>-1, 999, , empty string, NaN</em>, etc.</li>
   <li>Sometimes missing values can contain information by themselves.</li>
 </ul>
 
@@ -531,7 +535,7 @@ Example:  For a given list [S, C, Q, S, S, C, Q, S, C, S] the feature column can
 <a class="anchor" href="#51-imputation" aria-hidden="true"><span class="octicon octicon-link"></span></a>5.1 Imputation</h3>
 
 <ul>
-  <li>Use a value outside the range of the normal values for a variable. like $-1 , -9999$ etc.</li>
+  <li>Use a value outside the range of the normal values for a variable. like <em>-1 , -9999</em> etc.</li>
   <li>Replace with a likelihood – e.g. something that relates to the target variable.</li>
   <li>Replace with something which makes sense. For example - sometimes null may mean zero</li>
   <li>You may consider removing rows with many null values</li>
@@ -596,21 +600,19 @@ The downside is that we double the number of columns.</p>
 
 <p>TF-IDF is applied to a matrix where each <em>column represents a word, each row represents a document</em>, and each value shows the number of times a particular word occurred in a particular document.</p>
 
-<p><strong>MAKING DOCUMENTS/SENTENCES OF DIFFERENT LENGTHS MORE COMPARABLE</strong></p>
+<blockquote>
+  <p>Making sequences/documents of different lengths more comparable</p>
+</blockquote>
 
 <p>Term Frequency measures how frequently a term occurs in a document. Since every document is different in length, it is possible that a term would appear much more times in long documents than shorter ones. Thus, the term frequency is often divided by the document length (aka. the total number of terms in the document) as a way of normalization. Term-frequency (TF) normalises sum of the column values to 1.</p>
 
-<blockquote>
-  <p>TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document).</p>
-</blockquote>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>F</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>N</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>s</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>m</mi><mi>t</mi><mi>a</mi><mi>p</mi><mi>p</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>s</mi><mi>i</mi><mi>n</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>c</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi></mrow><mrow><mi>T</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi><mi>n</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>m</mi><mi>s</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>d</mi><mi>o</mi><mi>c</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">TF(t) = \frac{Number of times term t appears in a document}{Total number of terms in the document}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.25188em;vertical-align:-0.8804400000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">m</span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">m</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">p</span><span class="mord mathdefault">p</span><span class="mord mathdefault">e</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
 
 <p><strong>BOOST MORE IMPORTANT FEATURES</strong></p>
 
 <p>Normalizing feature by the inverse fraction of documents. In this case features corresponding to frequent words will be scaled down compared to features corresponding to rarer words.</p>
 
-<blockquote>
-  <p>IDF(t) = log(Total number of documents / Number of documents with term t in it).</p>
-</blockquote>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>D</mi><mi>F</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>log</mi><mo>⁡</mo><mfrac><mrow><mi>T</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi><mi>n</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mi>o</mi><mi>f</mi><mi>d</mi><mi>o</mi><mi>c</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>s</mi></mrow><mrow><mi>N</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mi>o</mi><mi>f</mi><mi>d</mi><mi>o</mi><mi>c</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>s</mi><mi>w</mi><mi>i</mi><mi>t</mi><mi>h</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>m</mi><mi>t</mi><mi>i</mi><mi>n</mi><mi>i</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">IDF(t) = \log{\frac{Total number of documents}{ Number of documents with term t in it}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.25188em;vertical-align:-0.8804400000000001em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">m</span><span class="mord mathdefault">t</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">i</span><span class="mord mathdefault">t</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">o</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">n</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">b</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span>
 
 <p>IDF scales features inversely proportionally to a number of word occurrences over documents</p>
 
